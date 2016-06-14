@@ -1,6 +1,7 @@
 package com.mredrock.cypioneer.utils;
 
 import android.app.Activity;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.mredrock.cypioneer.R;
@@ -29,8 +30,7 @@ public class DelayClose {
     public static void onBackPressed() {//poll = peek + remove
         long now = System.currentTimeMillis();
         if (now - last < 2000) {
-            //TODO WTF
-            activities.poll().onBackPressed();
+            activities.poll().finish();
         } else {
             last = now;
             Toast.makeText(activities.peek(), R.string.press_again, Toast.LENGTH_SHORT).show();
