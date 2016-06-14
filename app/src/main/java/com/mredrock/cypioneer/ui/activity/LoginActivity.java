@@ -33,6 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mredrock.cypioneer.R;
+import com.mredrock.cypioneer.utils.DelayClose;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -67,6 +68,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DelayClose.attachActivity(this);
         setContentView(R.layout.activity_login);
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -338,6 +340,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = null;
             showProgress(false);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        DelayClose.onBackPressed();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        DelayClose.detachActivity(this);
     }
 }
 
