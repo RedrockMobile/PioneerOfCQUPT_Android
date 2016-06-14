@@ -22,6 +22,6 @@ public class StudyDiscussionFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Toast.makeText(getActivity(), "这是学习心得", Toast.LENGTH_SHORT).show();
+
     }
 }

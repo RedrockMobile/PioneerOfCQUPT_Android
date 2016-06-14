@@ -22,6 +22,6 @@ public class HomePageFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Toast.makeText(getActivity(), "主页", Toast.LENGTH_SHORT).show();
+
     }
 }

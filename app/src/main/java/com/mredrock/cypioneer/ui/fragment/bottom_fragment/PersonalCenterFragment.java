@@ -21,6 +21,6 @@ public class PersonalCenterFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Toast.makeText(getActivity(), "这是个人中心", Toast.LENGTH_SHORT).show();
+
     }
 }
