@@ -1,7 +1,9 @@
-package com.mredrock.cypioneer;
+package com.mredrock.cypioneer.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.mredrock.cypioneer.R;
 
 public class MainActivity extends AppCompatActivity {
 
