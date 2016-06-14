@@ -31,6 +31,8 @@ public class BootActivity extends Activity {
 
                     //这是为了方便测试，直接跳转到MainActivity
                     //startActivity(new Intent(BootActivity.this, MainActivity.class));
+                    //这个activity应该关掉吧
+                    finish();
                 }
             }
         }, 3000);
