@@ -33,14 +33,12 @@ public class MainActivity extends AppCompatActivity {
 
     //初始化底部的4个Fragment，并加入数组中方便管理
     private void initFragments() {
-
         fragments.add(new HomePageFragment());
         fragments.add(new InformationFragment());
         fragments.add(new StudyDiscussionFragment());
         fragments.add(new PersonalCenterFragment());
     }
     private void initView() {
-        Toast.makeText(MainActivity.this, "123456", Toast.LENGTH_SHORT).show();
         /**
          * ----------------------BottomBar部分----------------------------------*/
         fragmentManager = getFragmentManager();
