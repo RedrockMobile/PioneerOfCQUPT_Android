@@ -5,5 +5,18 @@
     android:layout_height="match_parent"
     tools:context="com.mredrock.cypioneer.ui.activity.MainActivity"
     >
+<include
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    layout="@layout/bottom_bar"
+    android:layout_alignParentBottom="true"
+    />
 
+
+    <!--这是基本的Fragment-->
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
 </RelativeLayout>

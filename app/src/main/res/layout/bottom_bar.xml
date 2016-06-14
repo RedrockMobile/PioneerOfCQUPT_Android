@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RadioGroup
+        android:layout_alignParentBottom="true"
+        android:id="@+id/rg_tab"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ffff"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <RadioButton
+            android:id="@+id/bottom_home_page"
+            android:text="主页"
+            style="@style/CyPioneer_tab"
+            android:drawableTop="@drawable/homepage_selecter"
+            android:layout_height="match_parent"
+            android:checked="true"
+            />
+        <RadioButton
+            android:id="@+id/bottom_information"
+            android:text="资讯"
+            android:drawableTop="@drawable/information_selecter"
+            style="@style/CyPioneer_tab"
+            android:layout_height="match_parent" />
+        <RadioButton
+            android:id="@+id/bottom_study_discussion"
+            android:text="学习心得"
+            android:drawableTop="@drawable/study_discussion_selecter"
+            style="@style/CyPioneer_tab"
+            android:layout_height="match_parent" />
+        <RadioButton
+            android:id="@+id/bottom_personal_center"
+            android:text="个人中心"
+            android:drawableTop="@drawable/personal_center_selecter"
+            style="@style/CyPioneer_tab"
+            android:layout_height="match_parent" />
+    </RadioGroup>
+</LinearLayout>
