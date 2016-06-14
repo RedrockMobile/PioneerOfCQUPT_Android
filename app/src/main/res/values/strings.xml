@@ -18,4 +18,9 @@
         completions."
     </string>
 
+    <!-- person -->
+    <string name="exit_login">退出登录</string>
+    <string name="click_to_login">点我登录</string>
+    <string name="person_information">个人信息</string>
+    <!-- person -->
 </resources>
