@@ -28,6 +28,8 @@ public class BootActivity extends Activity {
                 } else {
                     Toast.makeText(BootActivity.this, R.string.not_login, Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(BootActivity.this, LoginActivity.class));
+                    //这个activity应该关掉吧
+                    finish();
                 }
             }
         }, 3000);
