@@ -34,6 +34,7 @@ public class BootActivity extends Activity {
                     //这个activity应该关掉吧
                     finish();
                 }
+                BootActivity.this.finish();
             }
         }, 3000);
     }

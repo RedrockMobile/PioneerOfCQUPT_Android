@@ -6,7 +6,7 @@ import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.RadioGroup;
-import android.widget.Toast;
+import android.util.Log;
 
 import com.mredrock.cypioneer.R;
 import com.mredrock.cypioneer.ui.fragment.bottom_fragment.HomePageFragment;
@@ -16,8 +16,10 @@ import com.mredrock.cypioneer.ui.fragment.bottom_fragment.StudyDiscussionFragmen
 
 import java.util.ArrayList;
 import java.util.List;
+import com.mredrock.cypioneer.utils.DelayClose;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity--->";
     private List<Fragment> fragments = fragments = new ArrayList<>();
     FragmentManager fragmentManager;
     RadioGroup radioGroup;
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DelayClose.attachActivity(this);
         setContentView(R.layout.activity_main);
         initFragments();
         initView();
@@ -84,4 +87,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+    @Override
+    public void onBackPressed() {
+        Log.d(TAG, "onBackPressed");
+        DelayClose.onBackPressed();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        DelayClose.detachActivity(this);
+    }
 }

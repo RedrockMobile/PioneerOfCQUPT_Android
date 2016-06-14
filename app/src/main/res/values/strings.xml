@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">重邮先锋</string>
     <string name="title_activity_login">登录</string>
-    <string name="not_login">Please login first</string>
+    <string name="not_login">请先登录</string>
+    <string name="login_success">登录成功</string>
+    <string name="login_fail">登录失败</string>
+    <string name="press_again">再按一次退出程序</string>
+    <string name="network_error">网络错误</string>
     <!-- Strings related to login -->
     <string name="prompt_email">帐号</string>
     <string name="prompt_password">密码</string>
@@ -14,4 +18,9 @@
         completions."
     </string>
 
+    <!-- person -->
+    <string name="exit_login">退出登录</string>
+    <string name="click_to_login">点我登录</string>
+    <string name="person_information">个人信息</string>
+    <!-- person -->
 </resources>
