@@ -1,4 +1,4 @@
-package com.mredrock.cypioneer.ui;
+package com.mredrock.cypioneer.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
