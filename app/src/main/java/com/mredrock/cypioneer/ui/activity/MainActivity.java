@@ -1,8 +1,10 @@
 package com.mredrock.cypioneer.ui.activity;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+
+
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.RadioGroup;
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         /**
          * ----------------------BottomBar部分----------------------------------*/
-        fragmentManager = getFragmentManager();
+        fragmentManager = getSupportFragmentManager();
         radioGroup = (RadioGroup) findViewById(R.id.rg_tab);
 
         //设置默认显示主页这个fragment
@@ -65,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.bottom_information:
                         FragmentTransaction transaction3 = fragmentManager.beginTransaction();
-                        transaction3.replace(R.id.content, fragments.get(1));
+                        transaction3.replace(R.id.content, new InformationFragment());
                         transaction3.commit();
                         break;
                     case R.id.bottom_study_discussion:
