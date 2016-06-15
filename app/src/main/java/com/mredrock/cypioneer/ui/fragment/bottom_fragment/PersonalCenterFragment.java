@@ -2,10 +2,12 @@ package com.mredrock.cypioneer.ui.fragment.bottom_fragment;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,9 +38,6 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     private View view;
     private TextView cacheSize;
     private TextView username;
-    private Handler handler;
-    private Dialog dialog;
-    private RatingBar ratingBar;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_personal_center, container, false);
@@ -48,7 +47,6 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        handler = new Handler(Looper.getMainLooper());
         username = (TextView) view.findViewById(R.id.person_username);
         username.setOnClickListener(this);
         if (Config.username != null) {
@@ -112,16 +110,8 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 refreshCacheSize();
                 break;
             case R.id.person_evaluate:
-//       TODO 检测是否已经评价         if ()
-                // return
-                dialog = new Dialog(getActivity());
-                dialog.setContentView(R.layout.dialog_evaluate);
-                dialog.setCanceledOnTouchOutside(false);
-                dialog.setTitle(R.string.evaluate);
-                dialog.findViewById(R.id.dialog_cancel).setOnClickListener(this);
-                dialog.findViewById(R.id.dialog_evaluate).setOnClickListener(this);
-                ratingBar = (RatingBar) dialog.findViewById(R.id.dialog_rating);
-                dialog.show();
+                //TODO 评价
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://202.202.43.42/lxyz/")));
                 break;
             case R.id.person_about:
                 startActivity(new Intent(getActivity(), AboutActivity.class));
@@ -130,25 +120,6 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 Config.username = null;
                 SFUtil.getInstance().saveToken(null);
                 startActivity(new Intent(getActivity(), LoginActivity.class));
-                break;
-            case R.id.dialog_cancel:
-                if (dialog != null) {
-                    dialog.dismiss();
-                }
-                break;
-            case R.id.dialog_evaluate:
-                if (dialog != null) {
-                    //TODO 评价
-//               ratingBar.getRating();
-                    dialog.setContentView(new ProgressBar(getActivity()));
-                    new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            dialog.dismiss();
-                            Toast.makeText(getActivity(), R.string.evaluate_success, Toast.LENGTH_SHORT).show();
-                        }
-                    }, 1000);
-                }
                 break;
 
         }
