@@ -17,7 +17,8 @@ public class BootActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager
+                .LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_boot);
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -31,8 +32,6 @@ public class BootActivity extends Activity {
 
                     //这是为了方便测试，直接跳转到MainActivity
                     //startActivity(new Intent(BootActivity.this, MainActivity.class));
-                    //这个activity应该关掉吧
-                    finish();
                 }
                 BootActivity.this.finish();
             }
