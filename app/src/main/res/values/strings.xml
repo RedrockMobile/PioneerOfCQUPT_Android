@@ -21,6 +21,9 @@
     <!-- person -->
     <string name="exit_login">退出登录</string>
     <string name="click_to_login">点我登录</string>
-    <string name="person_information">个人信息</string>
+    <string name="about">关于</string>
+    <string name="clear_cache">清除缓存</string>
+    <string name="cache_size">缓存大小：</string>
+    <string name="evaluate">评价</string>
     <!-- person -->
 </resources>
