@@ -1,7 +1,8 @@
 package com.mredrock.cypioneer.ui.view;
 
 /**
- * Created by RD on 2016/6/14.
+ * Created by PinkD on 2016/6/14.
+ * View for Login
  */
 public interface LoginView {
      int LOGIN_FAIL_VERIFY = 0;

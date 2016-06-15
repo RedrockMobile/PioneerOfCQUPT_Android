@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
- * Created by RD on 2016/6/14.
- * save token
+ * Created by PinkD on 2016/6/14.
+ * save and read token
  */
 public class SFUtil {
     private Context context;

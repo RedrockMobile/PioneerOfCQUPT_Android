@@ -3,20 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.mredrock.cypioneer.ui.activity.MainActivity"
+    tools:context="com.mredrock.cypioneer.ui.activity.AboutActivity"
     >
-<include
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    layout="@layout/bottom_bar"
-    android:layout_alignParentBottom="true"
-    />
-
-
-    <!--这是基本的Fragment-->
-    <FrameLayout
-        android:id="@+id/content"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="????????"
         />
+
 </RelativeLayout>

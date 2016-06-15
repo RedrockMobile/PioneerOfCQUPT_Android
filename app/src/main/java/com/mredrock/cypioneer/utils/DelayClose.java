@@ -10,7 +10,8 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 
 /**
- * Created by RD on 2016/6/14.
+ * Created by PinkD on 2016/6/14.
+ * Double click to exit
  */
 public class DelayClose {
     private static final String TAG = "DelayClose--->";
