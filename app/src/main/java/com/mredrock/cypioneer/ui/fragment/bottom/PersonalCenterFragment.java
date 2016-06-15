@@ -1,4 +1,4 @@
-package com.mredrock.cypioneer.ui.fragment.bottom_fragment;
+package com.mredrock.cypioneer.ui.fragment.bottom;
 
 import android.app.Dialog;
 import android.content.Intent;

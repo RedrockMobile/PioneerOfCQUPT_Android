@@ -1,4 +1,4 @@
-package com.mredrock.cypioneer.ui.fragment.bottom_fragment;
+package com.mredrock.cypioneer.ui.fragment.bottom;
 
 
 import android.os.Bundle;
@@ -8,11 +8,10 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.mredrock.cypioneer.R;
 import com.mredrock.cypioneer.ui.adapter.InfoFixedPageAdapter;
-import com.mredrock.cypioneer.ui.fragment.InfoViewPagerFragment.InfoPageFragment;
+import com.mredrock.cypioneer.ui.fragment.pager.InfoPageFragment;
 
 import java.util.ArrayList;
 import java.util.List;

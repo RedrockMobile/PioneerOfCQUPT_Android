@@ -1,4 +1,4 @@
-package com.mredrock.cypioneer.ui.fragment.InfoViewPagerFragment;
+package com.mredrock.cypioneer.ui.fragment.pager;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

@@ -11,10 +11,10 @@ import android.widget.RadioGroup;
 import android.util.Log;
 
 import com.mredrock.cypioneer.R;
-import com.mredrock.cypioneer.ui.fragment.bottom_fragment.HomePageFragment;
-import com.mredrock.cypioneer.ui.fragment.bottom_fragment.InformationFragment;
-import com.mredrock.cypioneer.ui.fragment.bottom_fragment.PersonalCenterFragment;
-import com.mredrock.cypioneer.ui.fragment.bottom_fragment.StudyDiscussionFragment;
+import com.mredrock.cypioneer.ui.fragment.bottom.HomePageFragment;
+import com.mredrock.cypioneer.ui.fragment.bottom.InformationFragment;
+import com.mredrock.cypioneer.ui.fragment.bottom.PersonalCenterFragment;
+import com.mredrock.cypioneer.ui.fragment.bottom.StudyDiscussionFragment;
 
 import java.util.ArrayList;
 import java.util.List;
