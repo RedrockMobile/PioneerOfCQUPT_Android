@@ -8,7 +8,8 @@ import android.view.ViewGroup;
 import java.util.List;
 
 /**
- * Created by xushuzhan on 2016/6/15.
+ * 资讯界面的ViewPager的Adapter
+ *  Created by xushuzhan on 2016/6/15.
  */
 public class InfoFixedPageAdapter extends FragmentStatePagerAdapter {
     private String[] titles;
