@@ -6,6 +6,7 @@ import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -13,35 +14,33 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
-import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jude.swipbackhelper.SwipeBackHelper;
 import com.mredrock.cypioneer.R;
-import com.mredrock.cypioneer.presenter.LoginPresenter;
-import com.mredrock.cypioneer.ui.view.LoginView;
-import com.mredrock.cypioneer.utils.DelayClose;
+import com.mredrock.cypioneer.presenter.ChangePasswordPresenter;
+import com.mredrock.cypioneer.ui.view.ChangePasswordView;
 
-public class LoginActivity extends AppCompatActivity implements LoginView {
-    private static final String TAG = "LoginActivity--->";
+public class ChangePassActivity extends AppCompatActivity implements ChangePasswordView {
+    private static final String TAG = "ChangePassActivity--->";
 
-    private LoginPresenter loginPresenter;
-    private AutoCompleteTextView mUsernameView;
-    private EditText mPasswordView;
+    private ChangePasswordPresenter changePasswordPresenter;
+    private EditText oldPasswordView;
+    private EditText newPasswordView;
     private View mProgressView;
     private View mLoginFormView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        DelayClose.attachActivity(this);
-        setContentView(R.layout.activity_login);
-        loginPresenter = new LoginPresenter(this);
-        mUsernameView = (AutoCompleteTextView) findViewById(R.id.login_username);
-
-        mPasswordView = (EditText) findViewById(R.id.login_password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        setContentView(R.layout.activity_change_pass);
+        SwipeBackHelper.onCreate(this);
+        changePasswordPresenter = new ChangePasswordPresenter(this);
+        oldPasswordView = (EditText) findViewById(R.id.change_password_old);
+        newPasswordView = (EditText) findViewById(R.id.change_password_new);
+        newPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == R.id.login || id == EditorInfo.IME_NULL) {
@@ -52,49 +51,49 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             }
         });
 
-        findViewById(R.id.login_button).setOnClickListener(new OnClickListener() {
+        findViewById(R.id.change_password_button).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 attemptLogin();
             }
         });
 
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
+        mLoginFormView = findViewById(R.id.change_password_form);
+        mProgressView = findViewById(R.id.change_password_progress);
     }
 
 
     private void attemptLogin() {
 
         // Reset errors.
-        mUsernameView.setError(null);
-        mPasswordView.setError(null);
+        oldPasswordView.setError(null);
+        newPasswordView.setError(null);
 
         // Store values at the time of the login attempt.
-        String username = mUsernameView.getText().toString();
-        String password = mPasswordView.getText().toString();
+        String oldPassword = oldPasswordView.getText().toString();
+        String newPassword = newPasswordView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
 
-        // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordView;
+        // Check for a valid newPassword, if the user entered one.
+        if (!TextUtils.isEmpty(newPassword) && !isPasswordValid(newPassword)) {
+            newPasswordView.setError(getString(R.string.error_invalid_password));
+            focusView = newPasswordView;
             cancel = true;
         }
 
-        // Check for username.
-        if (TextUtils.isEmpty(username)) {
-            mUsernameView.setError(getString(R.string.error_field_required));
-            focusView = mUsernameView;
+        // Check for oldPassword.
+        if (TextUtils.isEmpty(oldPassword)) {
+            oldPasswordView.setError(getString(R.string.error_field_required));
+            focusView = oldPasswordView;
             cancel = true;
         }
 
         if (cancel) {
             focusView.requestFocus();
         } else {
-            loginPresenter.login(username, password);
+            changePasswordPresenter.login(oldPassword, newPassword);
         }
     }
 
@@ -102,9 +101,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         return password.length() > 4;
     }
 
-    /**
-     * Shows the progress UI and hides the login form.
-     */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     public void showProgress(final boolean show) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
@@ -134,31 +130,30 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     @Override
-    public void LoginSuccess() {
+    public void ChangePasswordSuccess() {
         showProgress(false);
-        Toast.makeText(LoginActivity.this, R.string.login_success, Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        Toast.makeText(ChangePassActivity.this, R.string.change_password_success, Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(ChangePassActivity.this, MainActivity.class));
         this.finish();
     }
 
     @Override
-    public void LoginFail(int failCode, Throwable throwable) {
+    public void ChangePasswordFail(int failCode, Throwable throwable) {
         Log.d(TAG, "login--->" + throwable.toString());
         throwable.printStackTrace();
-        mPasswordView.setError(getString(R.string.login_fail));
-        LoginSuccess();
+        newPasswordView.setError(getString(R.string.login_fail));
     }
 
-
     @Override
-    public void onBackPressed() {
-        DelayClose.onBackPressed();
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        SwipeBackHelper.onPostCreate(this);
     }
 
     @Override
     protected void onDestroy() {
+        SwipeBackHelper.onDestroy(this);
         super.onDestroy();
-        DelayClose.detachActivity(this);
     }
 }
 

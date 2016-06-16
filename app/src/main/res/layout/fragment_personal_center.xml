@@ -13,42 +13,52 @@
         android:gravity="center_vertical"
         android:text="@string/click_to_login"
         android:textSize="20sp" />
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/person_clear_cache"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/default_height"
+            android:gravity="center_vertical"
+            android:text="@string/clear_cache"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/person_cache_size"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/default_height"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:gravity="center_vertical"
+            android:text="15kb"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/default_height"
+            android:layout_toLeftOf="@id/person_cache_size"
+            android:layout_toStartOf="@id/person_cache_size"
+            android:gravity="center_vertical"
+            android:text="@string/cache_size"
+            android:textSize="20sp" />
+
+
+    </RelativeLayout>
+
     <TextView
-        android:id="@+id/person_clear_cache"
-        android:layout_width="wrap_content"
+        android:id="@+id/person_change_password"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/default_height"
         android:gravity="center_vertical"
-        android:text="@string/clear_cache"
+        android:text="@string/change_password"
         android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/person_cache_size"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/default_height"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:gravity="center_vertical"
-        android:text="15kb"
-        android:textSize="20sp" />
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/default_height"
-        android:layout_toStartOf="@id/person_cache_size"
-        android:gravity="center_vertical"
-        android:text="@string/cache_size"
-        android:textSize="20sp"
-        android:layout_toLeftOf="@id/person_cache_size" />
-
-
-</RelativeLayout>
     <TextView
         android:id="@+id/person_evaluate"
         android:layout_width="match_parent"

@@ -1,24 +1,19 @@
 package com.mredrock.cypioneer.ui.fragment.bottom;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.NotificationCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
-import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mredrock.cypioneer.R;
 import com.mredrock.cypioneer.cfg.Config;
 import com.mredrock.cypioneer.ui.activity.AboutActivity;
+import com.mredrock.cypioneer.ui.activity.ChangePassActivity;
 import com.mredrock.cypioneer.ui.activity.LoginActivity;
 import com.mredrock.cypioneer.utils.PinkUtils;
 import com.mredrock.cypioneer.utils.SFUtil;
@@ -37,24 +32,24 @@ import rx.functions.Action1;
 public class PersonalCenterFragment extends Fragment implements View.OnClickListener {
     private View view;
     private TextView cacheSize;
-    private TextView username;
+    private TextView usernameTextView;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_personal_center, container, false);
-        return view;
+        return inflater.inflate(R.layout.fragment_personal_center, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        username = (TextView) view.findViewById(R.id.person_username);
-        username.setOnClickListener(this);
-        if (Config.username != null) {
-            username.setText(Config.username);
+        usernameTextView = (TextView) view.findViewById(R.id.person_username);
+        usernameTextView.setOnClickListener(this);
+        if (Config.user != null) {
+            usernameTextView.setText(Config.user.getName());
         }
         view.findViewById(R.id.person_clear_cache).setOnClickListener(this);
         cacheSize = (TextView) view.findViewById(R.id.person_cache_size);
         refreshCacheSize();
+        view.findViewById(R.id.person_change_password).setOnClickListener(this);
         view.findViewById(R.id.person_evaluate).setOnClickListener(this);
         view.findViewById(R.id.person_about).setOnClickListener(this);
         view.findViewById(R.id.person_exit_login).setOnClickListener(this);
@@ -109,6 +104,9 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 Toast.makeText(getActivity(), R.string.clear_cache_success, Toast.LENGTH_SHORT).show();
                 refreshCacheSize();
                 break;
+            case R.id.person_change_password:
+                startActivity(new Intent(getActivity(), ChangePassActivity.class));
+                break;
             case R.id.person_evaluate:
                 //TODO 评价
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://202.202.43.42/lxyz/")));
@@ -117,7 +115,7 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 startActivity(new Intent(getActivity(), AboutActivity.class));
                 break;
             case R.id.person_exit_login:
-                Config.username = null;
+                Config.user = null;
                 SFUtil.getInstance().saveToken(null);
                 startActivity(new Intent(getActivity(), LoginActivity.class));
                 break;
