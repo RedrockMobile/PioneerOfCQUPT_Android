@@ -2,6 +2,8 @@ package com.mredrock.cypioneer.cfg;
 
 import android.content.Context;
 
+import com.mredrock.cypioneer.model.bean.UserBean;
+
 import java.io.File;
 
 /**
@@ -15,5 +17,5 @@ public class Config {
         cacheDir = context.getExternalCacheDir();
     }
 
-    public static String username;
+    public static UserBean user;
 }
