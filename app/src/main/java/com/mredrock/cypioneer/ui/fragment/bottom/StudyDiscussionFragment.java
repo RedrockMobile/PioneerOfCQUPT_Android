@@ -78,7 +78,8 @@ public class StudyDiscussionFragment extends Fragment {
                     public void onCompleted() {
                         cancelProgressDialog();
                         if (page == 0) {
-                            //TODO add adapter
+                            mRecyclerView
+                                    .setAdapter(mBBSListAdapter = new BBSListAdapter(mBBSListBeen));
                         }
                     }
 
