@@ -5,4 +5,5 @@ package com.mredrock.cypioneer.cfg;
  * Api
  */
 public class Api {
+    public static final String BASE_URL = "http://202.202.43.42/lxyz/";
 }

@@ -14,6 +14,8 @@ import com.mredrock.cypioneer.R;
  * Created by xushuzhan on 2016/6/14.
  */
 public class StudyDiscussionFragment extends Fragment {
+
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_study_dicussion, container, false);
         return view;

@@ -1,4 +1,4 @@
-package com.mredrock.cypioneer.model;
+package com.mredrock.cypioneer.model.bean;
 
 import java.util.List;
 

@@ -1,10 +1,10 @@
-package com.mredrock.cypioneer.model;
+package com.mredrock.cypioneer.model.bean;
 
 /**
  * Created by simonla on 2016/6/15.
  * Have a good day.
  */
-public class BBSStatus {
+public class BBSStatusBean {
 
     /**
      * status : 200
