@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="50dp">
+    >
 
     <com.jude.rollviewpager.RollPagerView
         android:id="@+id/Carousel_figure"
