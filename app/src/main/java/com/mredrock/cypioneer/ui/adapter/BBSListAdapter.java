@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.mredrock.cypioneer.R;
 import com.mredrock.cypioneer.model.bean.BBSListBean;
@@ -30,7 +31,10 @@ public class BBSListAdapter extends RecyclerView.Adapter<BBSListAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
+        BBSListBean.DataBean dataBean = mDataBeen.get(position);
+        holder.mName.setText(dataBean.getUser_id());
+        holder.mTitle.setText(dataBean.getTitle());
+        holder.mTime.setText(dataBean.getTime());
     }
 
     @Override
@@ -39,9 +43,15 @@ public class BBSListAdapter extends RecyclerView.Adapter<BBSListAdapter.ViewHold
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
+        public TextView mName;
+        public TextView mTime;
+        public TextView mTitle;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            mName = (TextView) itemView.findViewById(R.id.tv_bbs_list_name);
+            mTime = (TextView) itemView.findViewById(R.id.tv_bbs_list_time);
+            mTitle = (TextView) itemView.findViewById(R.id.tv_bbs_list_title);
         }
     }
 }

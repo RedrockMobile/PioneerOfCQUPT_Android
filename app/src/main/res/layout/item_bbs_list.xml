@@ -27,7 +27,7 @@
             android:textSize="12sp"/>
 
         <TextView
-            android:id="@+id/tv_bbs_list_tiem"
+            android:id="@+id/tv_bbs_list_time"
             android:layout_width="0dp"
             android:layout_height="20dp"
             android:layout_weight="1"

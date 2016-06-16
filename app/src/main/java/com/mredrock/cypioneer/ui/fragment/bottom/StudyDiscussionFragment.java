@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -37,6 +38,7 @@ public class StudyDiscussionFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
     private SwipeRefreshLayout mSwipeRefreshLayout;
+    private LinearLayoutManager mLayoutManager;
     private FloatingActionButton mFab;
     private BBSListAdapter mBBSListAdapter;
     private ArrayList<BBSListBean.DataBean> mBBSListBeen;
@@ -100,6 +102,8 @@ public class StudyDiscussionFragment extends Fragment {
         mProgressDialog = new ProgressDialog(getActivity());
         mProgressDialog.setMessage("正在加载");
         mBBSListBeen = new ArrayList<>();
+        mRecyclerView.setLayoutManager(mLayoutManager=new LinearLayoutManager(getActivity()));
+        mRecyclerView.setHasFixedSize(true);
     }
 
     private void showProgressDialog() {

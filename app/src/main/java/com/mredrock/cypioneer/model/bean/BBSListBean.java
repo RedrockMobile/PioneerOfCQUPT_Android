@@ -11,18 +11,18 @@ public class BBSListBean {
     /**
      * status : 200
      * info : success
-     * data : [{"id":"8","title":"title2","user_id":"1","content":"adsf4","father_id":"0","time":"1465992353"},{"id":"5","title":"title2","user_id":"1","content":"adsf4","father_id":"0","time":"1465992264"},{"id":"1","title":"title","user_id":"2","content":"adsf","father_id":"0","time":"1465989116"}]
+     * data : [{"id":"24","title":"title2","user_id":"1","content":"adsf4","father_id":"0","time":"1466057735"},{"id":"18","title":"sf","user_id":"0","content":"fs","father_id":"0","time":"1466005791"},{"id":"11","title":"我就试试","user_id":"110","content":"内容","father_id":"0","time":"1466003891"},{"id":"8","title":"title2","user_id":"1","content":"adsf4","father_id":"0","time":"1465992353"},{"id":"5","title":"title2","user_id":"1","content":"adsf4","father_id":"0","time":"1465992264"},{"id":"1","title":"title","user_id":"2","content":"adsf","father_id":"0","time":"1465989116"}]
      */
 
     private int status;
     private String info;
     /**
-     * id : 8
+     * id : 24
      * title : title2
      * user_id : 1
      * content : adsf4
      * father_id : 0
-     * time : 1465992353
+     * time : 1466057735
      */
 
     private List<DataBean> data;
