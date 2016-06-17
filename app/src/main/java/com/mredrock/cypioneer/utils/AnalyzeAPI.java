@@ -1,13 +1,17 @@
 package com.mredrock.cypioneer.utils;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import com.mredrock.cypioneer.model.bean.CarouselFigure;
+import com.mredrock.cypioneer.ui.fragment.bottom.HomePageFragment;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -92,6 +96,9 @@ public class AnalyzeAPI implements Runnable {
                         Log.d(TAG, "parseJsonWithJsonObject: "+jsonObject.getString("title"));
 
                         myPicture.add(carouselFigure);
+
+
+
                 }catch (Exception e){
                     Log.d(TAG, "parseJsonWithJsonObject: 解析有点问题哟");
                 }
@@ -107,4 +114,32 @@ public class AnalyzeAPI implements Runnable {
             Log.d(TAG, "解析Json: " + e.getMessage());
         }
     }
+
+//测试代码
+//    private Bitmap getBitmapFromUrl(String url){
+//        Bitmap bitmap = null;
+//        HttpURLConnection connection = null;
+//
+//        try {
+//            URL mImageUrl = new URL(url);
+//            connection= (HttpURLConnection) mImageUrl.openConnection();
+//            connection.setRequestMethod("GET");
+//            connection.setReadTimeout(5*1000);
+//            connection.setConnectTimeout(5*1000);
+//            connection.setDoInput(true);
+//            connection.setDoOutput(true);
+//            bitmap = BitmapFactory.decodeStream(connection.getInputStream());
+//
+//        } catch (MalformedURLException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }finally {
+//            if(connection!=null){
+//                connection.disconnect();
+//            }
+//        }
+//
+//        return  bitmap;
+//    }
 }

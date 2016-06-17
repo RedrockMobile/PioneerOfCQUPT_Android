@@ -25,12 +25,12 @@ public class InformationFragment extends Fragment {
     public ViewPager mViewPager;
     private InfoFixedPageAdapter infoFixedPageAdapter;
 
-    //设置ViewPager的4个fragmrnt位置的数组
-    int ViewPagerPosion[]  = new int[]{0,1,2,3};
+    //设置ViewPager的3个fragmrnt位置的数组
+    int ViewPagerPosion[]  = new int[]{0,1,2};
     //储存fragment的数组
     private List<android.support.v4.app.Fragment> mFragments;
     //tab条目中的标题
-    private String[]titles={"通知公告","工作动态","基层行动","学习资料"};
+    private String[]titles={"通知公告","工作动态","基层行动"};
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_information, container, false);

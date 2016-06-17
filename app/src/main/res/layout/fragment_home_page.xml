@@ -1,14 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    xmlns:card_view="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:orientation="vertical">
 
     <com.jude.rollviewpager.RollPagerView
         android:id="@+id/Carousel_figure"
         android:layout_width="match_parent"
         android:layout_height="180dp"
-        app:rollviewpager_play_delay="3000"/>
+        app:rollviewpager_play_delay="3000" />
+    <!--<ScrollView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_marginTop="5dp"-->
+    <!--android:layout_below="@+id/Carousel_figure"-->
+    <!--&gt;-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+            card_view:cardBackgroundColor="#27ae60">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/homepage_party_rules"
+                    android:layout_marginTop="30dp"
+                    android:id="@+id/button_party_rules"
+                    android:layout_centerHorizontal="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="党章党规"
+                    android:layout_gravity="center"
+                    android:layout_below="@+id/button_party_rules"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+            card_view:cardBackgroundColor="#1abc9c"
+
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/homepage_series_speech"
+                    android:layout_marginTop="30dp"
+                    android:id="@+id/button_series_speech"
+                    android:layout_centerHorizontal="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="系列讲话"
+                    android:layout_gravity="center"
+                    android:layout_below="@+id/button_series_speech"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+            card_view:cardBackgroundColor="#e74c3c">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/homepage_qualified_members"
+                    android:layout_marginTop="30dp"
+                    android:id="@+id/button_qualified_members"
+                    android:layout_centerHorizontal="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="合格党员"
+                    android:layout_gravity="center"
+                    android:layout_below="@+id/button_qualified_members"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginTop="1dp">
+        <android.support.v7.widget.CardView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+            card_view:cardBackgroundColor="#1abc9c"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/homepage_internet_activity"
+                    android:layout_marginTop="30dp"
+                    android:id="@+id/button_internet_activity"
+                    android:layout_centerHorizontal="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="网络活动"
+                    android:layout_gravity="center"
+                    android:layout_below="@+id/button_internet_activity"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+            card_view:cardBackgroundColor="#e74c3c">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/homepage_advanced_model"
+                    android:layout_marginTop="30dp"
+                    android:id="@+id/button_advanced_model"
+                    android:layout_centerHorizontal="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="先进典型"
+                    android:layout_gravity="center"
+                    android:layout_below="@+id/button_advanced_model"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+            card_view:cardBackgroundColor="#27ae60">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/homepage_classic_movie"
+                android:layout_marginTop="30dp"
+                android:id="@+id/button_classic_movie"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="经典影像"
+                android:layout_gravity="center"
+                android:layout_below="@+id/button_classic_movie"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+
+    </LinearLayout>
+    <!--</ScrollView>-->
+
 </LinearLayout>
