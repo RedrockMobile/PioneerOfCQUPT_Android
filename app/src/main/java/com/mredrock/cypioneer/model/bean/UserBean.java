@@ -13,7 +13,6 @@ public class UserBean {
         this.changed = changed;
         this.user_id = user_id;
         this.name = name;
-        System.out.println(toString());
     }
 
     public int getChanged() {
