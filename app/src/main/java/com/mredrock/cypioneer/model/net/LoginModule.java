@@ -25,13 +25,11 @@ public class LoginModule {
     public void login(String username, String password, Action1<UserBean> success, Action1<Throwable> fail) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Api.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
         LoginNet loginNet = retrofit.create(LoginNet.class);
         loginNet.login(username, password)
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
                 .map(new Func1<String, UserBean>() {
                     @Override
                     public UserBean call(String s) {
@@ -39,13 +37,13 @@ public class LoginModule {
                         try {
                             jsonObject = new JSONObject(s).getJSONObject("data");
                             SFUtil.getInstance().saveToken(jsonObject.getString("token"));
-                            System.out.println(jsonObject.toString());
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                         return new Gson().fromJson(jsonObject.toString(), UserBean.class);
                     }
                 })
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(success, fail);
     }
 }
