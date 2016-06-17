@@ -3,17 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <com.jude.rollviewpager.RollPagerView
         android:id="@+id/Carousel_figure"
         android:layout_width="match_parent"
         android:layout_height="180dp"
         app:rollviewpager_play_delay="3000"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="60sp"
-        android:layout_gravity="center_horizontal"
-        android:text="这是主页"/>
 </LinearLayout>
