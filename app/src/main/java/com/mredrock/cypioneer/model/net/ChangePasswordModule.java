@@ -1,20 +1,15 @@
 package com.mredrock.cypioneer.model.net;
 
-import com.google.gson.Gson;
 import com.mredrock.cypioneer.cfg.Api;
 import com.mredrock.cypioneer.cfg.Config;
 import com.mredrock.cypioneer.net.ChangePasswordNet;
 import com.mredrock.cypioneer.utils.SFUtil;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
-import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**

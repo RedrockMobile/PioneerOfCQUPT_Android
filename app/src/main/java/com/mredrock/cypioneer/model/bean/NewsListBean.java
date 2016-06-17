@@ -3,26 +3,24 @@ package com.mredrock.cypioneer.model.bean;
 import java.util.List;
 
 /**
- * Created by simonla on 2016/6/15.
+ * Created by simonla on 2016/6/17.
  * Have a good day.
  */
-public class BBSListBean {
+public class NewsListBean {
 
     /**
      * status : 200
      * info : success
-     * data : [{"id":"24","title":"title2","user_id":"1","content":"adsf4","father_id":"0","time":"1466057735"},{"id":"18","title":"sf","user_id":"0","content":"fs","father_id":"0","time":"1466005791"},{"id":"11","title":"我就试试","user_id":"110","content":"内容","father_id":"0","time":"1466003891"},{"id":"8","title":"title2","user_id":"1","content":"adsf4","father_id":"0","time":"1465992353"},{"id":"5","title":"title2","user_id":"1","content":"adsf4","father_id":"0","time":"1465992264"},{"id":"1","title":"title","user_id":"2","content":"adsf","father_id":"0","time":"1465989116"}]
+     * data : [{"id":"16","title":"关于参加全市教育系统\u201c两学一做\u201d学习教育视频会议的通知","content":"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n","time":"2016-04-25 10:44:43"},{"id":"17","title":"关于召开全校\u201c两学一做\u201d学习教育工作部署会的通知","content":"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n","time":"2016-04-27 10:50:35"}]
      */
 
     private int status;
     private String info;
     /**
-     * id : 24
-     * title : title2
-     * user_id : 1
-     * content : adsf4
-     * father_id : 0
-     * time : 1466057735
+     * id : 16
+     * title : 关于参加全市教育系统“两学一做”学习教育视频会议的通知
+     * content : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
+     * time : 2016-04-25 10:44:43
      */
 
     private List<DataBean> data;
@@ -54,9 +52,7 @@ public class BBSListBean {
     public static class DataBean {
         private String id;
         private String title;
-        private String user_id;
         private String content;
-        private String father_id;
         private String time;
 
         public String getId() {
@@ -75,28 +71,12 @@ public class BBSListBean {
             this.title = title;
         }
 
-        public String getUser_id() {
-            return user_id;
-        }
-
-        public void setUser_id(String user_id) {
-            this.user_id = user_id;
-        }
-
         public String getContent() {
             return content;
         }
 
         public void setContent(String content) {
             this.content = content;
-        }
-
-        public String getFather_id() {
-            return father_id;
-        }
-
-        public void setFather_id(String father_id) {
-            this.father_id = father_id;
         }
 
         public String getTime() {
