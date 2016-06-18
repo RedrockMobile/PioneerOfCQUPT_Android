@@ -51,7 +51,7 @@ public class PhotoBean {
     public static class DataBean {
         private String title;
         private String link;
-        private String imgurl;
+        private String imgUrl;
 
         public String getTitle() {
             return title;
@@ -69,12 +69,12 @@ public class PhotoBean {
             this.link = link;
         }
 
-        public String getImgurl() {
-            return imgurl;
+        public String getImgUrl() {
+            return imgUrl;
         }
 
-        public void setImgurl(String imgurl) {
-            this.imgurl = imgurl;
+        public void setImgUrl(String imgUrl) {
+            this.imgUrl = imgUrl;
         }
     }
 }

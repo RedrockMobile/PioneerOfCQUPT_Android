@@ -9,6 +9,10 @@ public class UserBean {
     private String user_id;
     private int changed;
 
+    public UserBean(String name) {
+        this.name = name;
+    }
+
     public UserBean(int changed, String user_id, String name) {
         this.changed = changed;
         this.user_id = user_id;

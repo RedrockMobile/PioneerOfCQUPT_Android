@@ -1,7 +1,9 @@
 package com.mredrock.cypioneer.net;
 
+import com.mredrock.cypioneer.model.bean.CommonWrapper;
 import com.mredrock.cypioneer.model.bean.UserBean;
 
+import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
@@ -13,7 +15,7 @@ import rx.Observable;
 public interface LoginNet {
     @FormUrlEncoded
     @POST("index.php?m=Home&c=Login&a=login")
-    Observable<String> login(
+    Observable<CommonWrapper> login(
             @Field("idcard") String idcard,
             @Field("password") String password
     );

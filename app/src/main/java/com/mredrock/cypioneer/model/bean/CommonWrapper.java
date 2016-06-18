@@ -1,5 +1,9 @@
 package com.mredrock.cypioneer.model.bean;
 
+import com.google.gson.internal.LinkedTreeMap;
+
+import org.json.JSONObject;
+
 /**
  * Created by PinkD on 2016/6/17.
  * wrapper
@@ -7,19 +11,19 @@ package com.mredrock.cypioneer.model.bean;
 public class CommonWrapper {
     private String info;
     private int status;
-    private String data;
+    private LinkedTreeMap data;
 
-    public CommonWrapper(String data, String info, int status) {
+    public CommonWrapper(LinkedTreeMap data, String info, int status) {
         this.data = data;
         this.info = info;
         this.status = status;
     }
 
-    public String getData() {
+    public LinkedTreeMap getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(LinkedTreeMap data) {
         this.data = data;
     }
 
@@ -37,5 +41,14 @@ public class CommonWrapper {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "CommonWrapper{" +
+                "data='" + data + '\'' +
+                ", info='" + info + '\'' +
+                ", status=" + status +
+                '}';
     }
 }

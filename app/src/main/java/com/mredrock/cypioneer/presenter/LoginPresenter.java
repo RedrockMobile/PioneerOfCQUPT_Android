@@ -4,6 +4,7 @@ import com.mredrock.cypioneer.cfg.Config;
 import com.mredrock.cypioneer.model.bean.UserBean;
 import com.mredrock.cypioneer.model.net.LoginModule;
 import com.mredrock.cypioneer.ui.view.LoginView;
+import com.mredrock.cypioneer.utils.SFUtil;
 
 import rx.functions.Action1;
 
@@ -24,6 +25,7 @@ public class LoginPresenter {
             @Override
             public void call(UserBean userBean) {
                 Config.user = userBean;
+                SFUtil.getInstance().saveUsername(userBean.getName());
                 loginView.LoginSuccess();
             }
         };

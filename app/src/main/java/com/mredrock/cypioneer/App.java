@@ -3,6 +3,7 @@ package com.mredrock.cypioneer;
 import android.app.Application;
 
 import com.mredrock.cypioneer.cfg.Config;
+import com.mredrock.cypioneer.model.bean.UserBean;
 import com.mredrock.cypioneer.utils.SFUtil;
 
 /**

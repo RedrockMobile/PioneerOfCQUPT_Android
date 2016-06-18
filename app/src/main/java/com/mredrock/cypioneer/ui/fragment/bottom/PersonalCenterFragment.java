@@ -56,6 +56,14 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
 
     }
 
+    @Override
+    public void onResume() {
+        if (Config.user != null) {
+            usernameTextView.setText(Config.user.getName());
+        }
+        super.onResume();
+    }
+
     private void refreshCacheSize() {
         Observable.create(new Observable.OnSubscribe<String>() {
             @Override

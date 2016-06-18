@@ -3,6 +3,9 @@ package com.mredrock.cypioneer.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.mredrock.cypioneer.cfg.Config;
+import com.mredrock.cypioneer.model.bean.UserBean;
+
 /**
  * Created by PinkD on 2016/6/14.
  * save and read token
@@ -17,7 +20,7 @@ public class SFUtil {
 
     public void init(Context context) {
         this.context = context;
-         sharedPreferences = context.getSharedPreferences("data", Context.MODE_PRIVATE);
+        sharedPreferences = context.getSharedPreferences("data", Context.MODE_PRIVATE);
     }
 
     private static class thisHolder {
@@ -37,6 +40,22 @@ public class SFUtil {
         }
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("token", token);
+        editor.apply();
+    }
+
+    public String getUsername() {
+        if (thisHolder.sfUtil.context == null) {
+            throw new NullPointerException("init first");
+        }
+        return sharedPreferences.getString("username", null);
+    }
+
+    public void saveUsername(String username) {
+        if (thisHolder.sfUtil.context == null) {
+            throw new NullPointerException("init first");
+        }
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("username", username);
         editor.apply();
     }
 }

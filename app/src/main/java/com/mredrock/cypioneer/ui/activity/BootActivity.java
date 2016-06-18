@@ -9,6 +9,8 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.mredrock.cypioneer.R;
+import com.mredrock.cypioneer.cfg.Config;
+import com.mredrock.cypioneer.model.bean.UserBean;
 import com.mredrock.cypioneer.utils.SFUtil;
 
 public class BootActivity extends Activity {
@@ -25,6 +27,7 @@ public class BootActivity extends Activity {
             public void run() {
                 if (SFUtil.getInstance().getToken() != null) {
                     //TODO:觉得应该验证一下token是否过期
+                    Config.user = new UserBean(SFUtil.getInstance().getUsername());
                     startActivity(new Intent(BootActivity.this, MainActivity.class));
                 } else {
                     Toast.makeText(BootActivity.this, R.string.not_login, Toast.LENGTH_SHORT).show();

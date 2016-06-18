@@ -2,6 +2,7 @@ package com.mredrock.cypioneer.model.net;
 
 import com.google.gson.Gson;
 import com.mredrock.cypioneer.cfg.Api;
+import com.mredrock.cypioneer.model.bean.CommonWrapper;
 import com.mredrock.cypioneer.model.bean.UserBean;
 import com.mredrock.cypioneer.net.LoginNet;
 import com.mredrock.cypioneer.utils.SFUtil;
@@ -25,17 +26,18 @@ public class LoginModule {
     public void login(String username, String password, Action1<UserBean> success, Action1<Throwable> fail) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Api.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
         LoginNet loginNet = retrofit.create(LoginNet.class);
         loginNet.login(username, password)
                 .subscribeOn(Schedulers.io())
-                .map(new Func1<String, UserBean>() {
+                .map(new Func1<CommonWrapper, UserBean>() {
                     @Override
-                    public UserBean call(String s) {
+                    public UserBean call(CommonWrapper commonWrapper) {
                         JSONObject jsonObject = new JSONObject();
                         try {
-                            jsonObject = new JSONObject(s).getJSONObject("data");
+                            jsonObject = new JSONObject(commonWrapper.getData());
                             SFUtil.getInstance().saveToken(jsonObject.getString("token"));
                         } catch (JSONException e) {
                             e.printStackTrace();
