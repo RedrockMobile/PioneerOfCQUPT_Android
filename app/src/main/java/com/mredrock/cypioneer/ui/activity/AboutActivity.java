@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.Stack;
 
 public class AboutActivity extends AppCompatActivity implements View.OnClickListener {
-
+    private Dialog dialog;
     private static final String TAG = "AboutActivity";
     private Stack<Config.PLAY> stack = new Stack<>();
 
@@ -110,12 +110,13 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
                     if (stack.equals(Config.PLAY.getTargetStack())) {
                         Snackbar.make(v, "             ???", Snackbar.LENGTH_SHORT).show();
                         try {
-                            Dialog dialog = new Dialog(this);
-                            ImageView gifView = new ImageView(this);
-                            Glide.with(this).load(PinkUtils.getTargetGifByte(this, "play.gif")).into(gifView);
-                            gifView.setImageResource(R.color.none);
-                            dialog.setContentView(gifView, new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-                            dialog.show();
+                            if (dialog == null) {
+                                dialog = new Dialog(this);
+                                ImageView gifView = new ImageView(this);
+                                Glide.with(this).load(PinkUtils.getTargetGifByte(this, "play.gif")).into(gifView);
+                                gifView.setImageResource(R.color.none);
+                                dialog.setContentView(gifView, new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                            }dialog.show();
                         } catch (IOException e) {
                             e.printStackTrace();
                         }

@@ -191,11 +191,15 @@ public class PinkUtils {
         while (inputStream.read(buffer) != -1) {
             byteArrayOutputStream.write(buffer);
         }
+        inputStream.close();
         return byteArrayOutputStream.toByteArray();
     }
 
     public static Movie getTargetGifMovie(Context context, String name) throws IOException {
-        return Movie.decodeStream(getTargetGifInputStream(context, name));
+        InputStream inputStream = getTargetGifInputStream(context, name);
+        Movie movie = Movie.decodeStream(inputStream);
+        inputStream.close();
+        return movie;
     }
 
     public static InputStream getTargetGifInputStream(Context context, String name) throws IOException {
