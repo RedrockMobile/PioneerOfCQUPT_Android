@@ -1,6 +1,8 @@
 package com.mredrock.cypioneer.utils;
 
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.Movie;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
@@ -8,6 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -180,4 +183,12 @@ public class PinkUtils {
         return str[str.length - 1];
     }
 
+    public static Movie getTargetGifMovie(Context context) throws IOException {
+        return Movie.decodeStream(getTargetGifInputStream(context));
+    }
+
+    public static InputStream getTargetGifInputStream(Context context) throws IOException {
+        AssetManager assetManager = context.getAssets();
+        return assetManager.open("play.gif");
+    }
 }

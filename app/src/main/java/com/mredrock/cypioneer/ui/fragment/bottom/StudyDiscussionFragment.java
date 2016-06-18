@@ -57,6 +57,6 @@ public class StudyDiscussionFragment extends Fragment {
             }
         };
 
-        HttpMethods.getInstance().getNewsList(subscriber,1,1);
+        HttpMethods.getInstance().getNewsList(subscriber, 1, 1);
     }
 }

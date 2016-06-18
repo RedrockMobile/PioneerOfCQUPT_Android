@@ -18,10 +18,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ant.liao.GifView;
 import com.jude.swipbackhelper.SwipeBackHelper;
 import com.mredrock.cypioneer.R;
 import com.mredrock.cypioneer.presenter.ChangePasswordPresenter;
 import com.mredrock.cypioneer.ui.view.ChangePasswordView;
+import com.mredrock.cypioneer.utils.PinkUtils;
+
+import java.io.IOException;
+
 
 public class ChangePassActivity extends AppCompatActivity implements ChangePasswordView {
     private static final String TAG = "ChangePassActivity--->";

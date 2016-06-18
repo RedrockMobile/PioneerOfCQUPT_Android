@@ -1,17 +1,14 @@
 package com.mredrock.cypioneer.utils;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.util.Log;
 
+import com.mredrock.cypioneer.BuildConfig;
 import com.mredrock.cypioneer.model.bean.CarouselFigure;
-import com.mredrock.cypioneer.ui.fragment.bottom.HomePageFragment;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -31,13 +28,14 @@ public class AnalyzeAPI implements Runnable {
 
     public interface AnalyzeAPIListener {
         void onSuccess() throws MalformedURLException;
+
         void onFailed();
-}
+    }
 
     public AnalyzeAPI(final String API, AnalyzeAPIListener listener, ArrayList<CarouselFigure> myPicture) {
         this.API = API;
         this.listener = listener;
-        this.myPicture=myPicture;
+        this.myPicture = myPicture;
         Thread thread = new Thread(this);
         thread.start();
 
@@ -66,8 +64,10 @@ public class AnalyzeAPI implements Runnable {
             parseJsonWithJsonObject(response.toString());
 
         } catch (Exception e) {
-            if(listener!=null){
-                Log.d(TAG, "获得Json: 网络好像有点问题 (ಥ _ ಥ)· " + e.getMessage());
+            if (listener != null) {
+                if (BuildConfig.DEBUG) {
+                    Log.d(TAG, "获得Json: 网络好像有点问题 (ಥ _ ಥ)· " + e.getMessage());
+                }
                 listener.onFailed();
 
             }
@@ -83,24 +83,31 @@ public class AnalyzeAPI implements Runnable {
         //解析Json
         try {
             JSONObject object = new JSONObject(JsonData);
-            JSONArray picyureJsonArray=object.getJSONArray("data");
+            JSONArray picyureJsonArray = object.getJSONArray("data");
             for (int i = 0; i < picyureJsonArray.length(); i++) {
                 try {
                     JSONObject jsonObject = picyureJsonArray.getJSONObject(i);
                     CarouselFigure carouselFigure = new CarouselFigure();
-                        carouselFigure.setImgurl(jsonObject.getString("imgurl"));
-                        Log.d(TAG, "parseJsonWithJsonObject: "+jsonObject.getString("imgurl"));
-                        carouselFigure.setLink(jsonObject.getString("link"));
-                        Log.d(TAG, "parseJsonWithJsonObject: "+jsonObject.getString("link"));
-                        carouselFigure.setTitle(jsonObject.getString("title"));
-                        Log.d(TAG, "parseJsonWithJsonObject: "+jsonObject.getString("title"));
+                    carouselFigure.setImgurl(jsonObject.getString("imgurl"));
+                    if (BuildConfig.DEBUG) {
+                        Log.d(TAG, "parseJsonWithJsonObject: " + jsonObject.getString("imgurl"));
+                    }
+                    carouselFigure.setLink(jsonObject.getString("link"));
+                    if (BuildConfig.DEBUG) {
+                        Log.d(TAG, "parseJsonWithJsonObject: " + jsonObject.getString("link"));
+                    }
+                    carouselFigure.setTitle(jsonObject.getString("title"));
+                    if (BuildConfig.DEBUG) {
+                        Log.d(TAG, "parseJsonWithJsonObject: " + jsonObject.getString("title"));
+                    }
 
-                        myPicture.add(carouselFigure);
+                    myPicture.add(carouselFigure);
 
 
-
-                }catch (Exception e){
-                    Log.d(TAG, "parseJsonWithJsonObject: 解析有点问题哟");
+                } catch (Exception e) {
+                    if (BuildConfig.DEBUG) {
+                        Log.d(TAG, "parseJsonWithJsonObject: 解析有点问题哟");
+                    }
                 }
             }
             if (listener != null) {
@@ -108,10 +115,12 @@ public class AnalyzeAPI implements Runnable {
             }
 
         } catch (Exception e) {
-            if(listener!=null){
+            if (listener != null) {
                 listener.onFailed();
             }
-            Log.d(TAG, "解析Json: " + e.getMessage());
+            if (BuildConfig.DEBUG) {
+                Log.d(TAG, "解析Json: " + e.getMessage());
+            }
         }
     }
 
