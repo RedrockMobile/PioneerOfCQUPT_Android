@@ -3,6 +3,8 @@ package com.mredrock.cypioneer.ui.fragment.pager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mredrock.cypioneer.R;
+import com.mredrock.cypioneer.ui.adapter.InfoListAdapter;
 
 /**
  * Created by xushuzhan on 2016/6/15.
@@ -18,6 +21,10 @@ public class InfoPageFragment extends Fragment {
     private static final String KEY_TITLE = "title";
     private static final String KEY_POSITION = "position";
     private View mView;
+
+    public RecyclerView newsList;
+    public InfoListAdapter newsListAdapter;
+
     private TextView mTextView;//测试时用的文本框
     private String title;//设置给测试文本的标题
     private int f_position;//viewpager的fragment的位置
@@ -57,9 +64,9 @@ public class InfoPageFragment extends Fragment {
     }
 
     private void initView() {
-        mTextView = (TextView) mView.findViewById(R.id.text_viewpager_fragment);
-        mTextView.setText(title);
-
-        Toast.makeText(getContext(), f_position+"", Toast.LENGTH_SHORT).show();
+        newsList = (RecyclerView) mView.findViewById(R.id.info_recyclerview);
+        newsList.setLayoutManager( new LinearLayoutManager(getContext()));
+        newsListAdapter = new InfoListAdapter();
+        newsList.setAdapter(newsListAdapter);
     }
 }
