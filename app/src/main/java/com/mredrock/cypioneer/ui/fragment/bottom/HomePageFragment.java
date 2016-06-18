@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.jude.rollviewpager.RollPagerView;
+import com.mredrock.cypioneer.App;
 import com.mredrock.cypioneer.R;
 import com.mredrock.cypioneer.model.bean.PhotoBean;
 import com.mredrock.cypioneer.net.HttpMethods;
@@ -114,10 +115,8 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
                 //请求完成，换句话说，所有的newslistBean都仍到list里面去了
                 //然后就可以执行把arrayList给recyclerView的adapter之类的操作了
                 Log.d(TAG, "onCompleted: 请求完成啦！！！");
-                Log.d(TAG, "onCompleted: "+carouselFigures.get(0).getLink());
-                Log.d(TAG, "onCompleted: "+carouselFigures.get(0).getImgurl());
-                Log.d(TAG, "onCompleted: "+carouselFigures.get(0).getTitle());
-                setRollPagerView();//启动轮播图的方法
+
+                setRollPagerView();//启动轮播图
             }
         };
 
