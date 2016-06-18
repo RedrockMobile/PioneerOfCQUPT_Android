@@ -26,7 +26,7 @@ public class StudyDiscussionFragment extends Fragment {
 
     public static final String TAG = "StudyDiscussionFragment";
 
-    private ArrayList<PhotoBean.DataBean> mDataBeen;
+    private ArrayList<NewsListBean.DataBean> mDataBeen;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_study_dicussion, container, false);
@@ -40,14 +40,14 @@ public class StudyDiscussionFragment extends Fragment {
     }
 
     public void getNewList() {
-        Subscriber<PhotoBean.DataBean> subscriber = new Subscriber<PhotoBean.DataBean>() {
+        Subscriber<NewsListBean.DataBean> subscriber = new Subscriber<NewsListBean.DataBean>() {
             @Override
             public void onError(Throwable e) {
                 //发生了错误的回调
             }
 
             @Override
-            public void onNext(PhotoBean.DataBean dataBean) {
+            public void onNext(NewsListBean.DataBean dataBean) {
                 //这里可以获取到我们想要的实体类
                 //在Activity里new一个list，把dataBean扔进去就行了
                 //举个例子:
@@ -59,13 +59,13 @@ public class StudyDiscussionFragment extends Fragment {
             public void onCompleted() {
                 //请求完成，换句话说，所有的newslistBean都仍到list里面去了
                 //然后就可以执行把arrayList给recyclerView的adapter之类的操作了
-                Toast.makeText(getContext(), "我测试一下是否能进行UI操作", Toast.LENGTH_SHORT).show();
                 Log.d(TAG, "onCompleted: 请求完成啦！！！");
-                Log.d(TAG, "onCompleted: "+mDataBeen.get(0).getTitle());
-            //
+                for(int i=0;i<mDataBeen.size();i++){
+                    Log.d(TAG, "onCompleted: "+mDataBeen.get(i).getContent());
+                }
             }
         };
 
-        HttpMethods.getInstance().getPhotos(subscriber);
+        HttpMethods.getInstance().getNewsList(subscriber,1,2);
     }
 }

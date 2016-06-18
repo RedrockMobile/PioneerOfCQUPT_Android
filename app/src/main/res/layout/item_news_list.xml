@@ -34,6 +34,7 @@
         android:layout_height="wrap_content"
         android:text="2016-06-07"
         android:textSize="8sp"
+        android:maxLines="1"
         android:textColor="#999999"
         android:layout_alignBottom="@+id/divider"
         android:layout_alignParentRight="true"

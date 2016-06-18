@@ -1,12 +1,16 @@
 package com.mredrock.cypioneer.ui.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.mredrock.cypioneer.App;
 import com.mredrock.cypioneer.R;
+import com.mredrock.cypioneer.model.bean.NewsListBean;
 
 import java.util.ArrayList;
 
@@ -14,8 +18,12 @@ import java.util.ArrayList;
  * Created by xushuzhan on 2016/6/18.
  */
 public class InfoListAdapter extends RecyclerView.Adapter<InfoListAdapter.MyViewHolder> {
-    //public InfoListAdapter(ArrayList<>){};
 
+    public ArrayList<NewsListBean.DataBean> newsListInfo;
+
+    public InfoListAdapter(ArrayList<NewsListBean.DataBean> newsListInfo){
+        this.newsListInfo=newsListInfo;
+    }
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_news_list,parent,false);
@@ -26,11 +34,19 @@ public class InfoListAdapter extends RecyclerView.Adapter<InfoListAdapter.MyView
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
+        try{
+        holder.title.setText(newsListInfo.get(position).getTitle());
+        holder.content.setText(newsListInfo.get(position).getContent());
+        holder.time.setText(newsListInfo.get(position).getTime());
+        }catch (Exception e){
+            Log.d("InfoListAdapter", "onBindViewHolder: "+e.getMessage());
+            Toast.makeText(App.mContext, "抱歉，出了点小问题/(ㄒoㄒ)/~~", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
     public int getItemCount() {
-        return 15;
+        return newsListInfo.size();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {

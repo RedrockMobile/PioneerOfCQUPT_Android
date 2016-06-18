@@ -26,11 +26,8 @@ public class HomePagePictureAdapter extends StaticPagerAdapter {
     public View getView(ViewGroup container, int position) {
         Log.d("HomePagePictureAdapter", "getView: position"+carouselFigures.get(position).getImgurl());
         ImageView view = new ImageView(container.getContext());
-        String a = carouselFigures.get(position).getImgurl().replace(" ","");
-
         Glide.with(fragment)
-                //.load(carouselFigures.get(position).getImgurl())
-                .load(a)
+                .load(carouselFigures.get(position).getImgurl())
                 .into(view);
 
         view.setScaleType(ImageView.ScaleType.CENTER_CROP);
