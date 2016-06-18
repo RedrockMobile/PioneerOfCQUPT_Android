@@ -7,5 +7,12 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@drawable/toolbar">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="重邮先锋网“两学一做”学习专题网"
+            android:textColor="#fff"
+            android:textSize="15sp"
+            />
     </android.support.v7.widget.Toolbar>
 </LinearLayout>
