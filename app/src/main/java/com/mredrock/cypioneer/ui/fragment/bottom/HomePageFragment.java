@@ -1,11 +1,7 @@
 package com.mredrock.cypioneer.ui.fragment.bottom;
 
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.util.Log;
@@ -13,23 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.jude.rollviewpager.RollPagerView;
-import com.jude.rollviewpager.adapter.DynamicPagerAdapter;
-import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 import com.mredrock.cypioneer.R;
-import com.mredrock.cypioneer.model.bean.CarouselFigure;
 import com.mredrock.cypioneer.model.bean.PhotoBean;
 import com.mredrock.cypioneer.net.HttpMethods;
 import com.mredrock.cypioneer.ui.adapter.HomePagePictureAdapter;
-import com.mredrock.cypioneer.utils.AnalyzeAPI;
-
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
 import rx.Subscriber;
@@ -40,7 +26,6 @@ import rx.Subscriber;
  */
 public class HomePageFragment extends Fragment implements View.OnClickListener {
     public static final String TAG = "HomePageFragment";
-    public static final int SUCCESS = 0;
     private ArrayList<PhotoBean.DataBean> carouselFigures;//轮播图实体类数组
 
     //朱大的库太方便了
@@ -119,7 +104,9 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
                 //这里可以获取到我们想要的实体类
                 //在Activity里new一个list，把dataBean扔进去就行了
                 //举个例子:
+
                 carouselFigures.add(dataBean);
+                Log.d(TAG, "onNext: "+carouselFigures.get(0).getImgurl());
             }
 
             @Override
@@ -127,7 +114,9 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
                 //请求完成，换句话说，所有的newslistBean都仍到list里面去了
                 //然后就可以执行把arrayList给recyclerView的adapter之类的操作了
                 Log.d(TAG, "onCompleted: 请求完成啦！！！");
+                Log.d(TAG, "onCompleted: "+carouselFigures.get(0).getLink());
                 Log.d(TAG, "onCompleted: "+carouselFigures.get(0).getImgurl());
+                Log.d(TAG, "onCompleted: "+carouselFigures.get(0).getTitle());
                 setRollPagerView();//启动轮播图的方法
             }
         };

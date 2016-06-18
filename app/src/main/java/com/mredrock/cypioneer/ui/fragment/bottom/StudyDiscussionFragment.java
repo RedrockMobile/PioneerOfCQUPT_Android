@@ -62,6 +62,7 @@ public class StudyDiscussionFragment extends Fragment {
                 Toast.makeText(getContext(), "我测试一下是否能进行UI操作", Toast.LENGTH_SHORT).show();
                 Log.d(TAG, "onCompleted: 请求完成啦！！！");
                 Log.d(TAG, "onCompleted: "+mDataBeen.get(0).getTitle());
+            //
             }
         };
 

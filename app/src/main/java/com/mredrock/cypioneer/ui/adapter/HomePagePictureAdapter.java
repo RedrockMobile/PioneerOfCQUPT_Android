@@ -1,6 +1,5 @@
 package com.mredrock.cypioneer.ui.adapter;
 
-import android.graphics.Bitmap;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
@@ -9,9 +8,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
-import com.mredrock.cypioneer.R;
 import com.mredrock.cypioneer.model.bean.PhotoBean;
-
 import java.util.ArrayList;
 
 /**
@@ -29,8 +26,11 @@ public class HomePagePictureAdapter extends StaticPagerAdapter {
     public View getView(ViewGroup container, int position) {
         Log.d("HomePagePictureAdapter", "getView: position"+carouselFigures.get(position).getImgurl());
         ImageView view = new ImageView(container.getContext());
+        String a = carouselFigures.get(position).getImgurl().replace(" ","");
+
         Glide.with(fragment)
-                .load("http://202.202.43.42/lxyz/Public/uploads/2016-06-07/575676790d7db.jpg")
+                //.load(carouselFigures.get(position).getImgurl())
+                .load(a)
                 .into(view);
 
         view.setScaleType(ImageView.ScaleType.CENTER_CROP);
