@@ -8,17 +8,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
-import com.ant.liao.GifView;
+import com.bumptech.glide.Glide;
 import com.jude.swipbackhelper.SwipeBackHelper;
 import com.mredrock.cypioneer.BuildConfig;
 import com.mredrock.cypioneer.R;
 import com.mredrock.cypioneer.cfg.Config;
+import com.mredrock.cypioneer.utils.PinkUtils;
 
 import java.io.IOException;
 import java.util.Stack;
-
-import static com.mredrock.cypioneer.utils.PinkUtils.getTargetGifInputStream;
 
 public class AboutActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -108,13 +108,12 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
                 } else {
                     stack.push(Config.PLAY.a);
                     if (stack.equals(Config.PLAY.getTargetStack())) {
-                        Snackbar.make(v, "     ???", Snackbar.LENGTH_SHORT).show();
+                        Snackbar.make(v, "             ???", Snackbar.LENGTH_SHORT).show();
                         try {
                             Dialog dialog = new Dialog(this);
-//                            dialog.setContentView(R.layout.gif_test);
-//                            GifView gifView = (GifView) dialog.findViewById(R.id.test);
-                            GifView gifView = new GifView(this);
-                            gifView.setGifImage(getTargetGifInputStream(this));
+                            ImageView gifView = new ImageView(this);
+                            Glide.with(this).load(PinkUtils.getTargetGifByte(this, "play.gif")).into(gifView);
+                            gifView.setImageResource(R.color.none);
                             dialog.setContentView(gifView, new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                             dialog.show();
                         } catch (IOException e) {

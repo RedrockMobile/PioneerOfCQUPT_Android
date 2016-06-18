@@ -10,6 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -183,12 +184,22 @@ public class PinkUtils {
         return str[str.length - 1];
     }
 
-    public static Movie getTargetGifMovie(Context context) throws IOException {
-        return Movie.decodeStream(getTargetGifInputStream(context));
+    public static byte[] getTargetGifByte(Context context, String name) throws IOException {
+        byte[] buffer = new byte[1024];
+        InputStream inputStream = getTargetGifInputStream(context, name);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        while (inputStream.read(buffer) != -1) {
+            byteArrayOutputStream.write(buffer);
+        }
+        return byteArrayOutputStream.toByteArray();
     }
 
-    public static InputStream getTargetGifInputStream(Context context) throws IOException {
+    public static Movie getTargetGifMovie(Context context, String name) throws IOException {
+        return Movie.decodeStream(getTargetGifInputStream(context, name));
+    }
+
+    public static InputStream getTargetGifInputStream(Context context, String name) throws IOException {
         AssetManager assetManager = context.getAssets();
-        return assetManager.open("play.gif");
+        return assetManager.open(name);
     }
 }
