@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.widget.RadioGroup;
 import android.util.Log;
 
+import com.mredrock.cypioneer.BuildConfig;
 import com.mredrock.cypioneer.R;
 import com.mredrock.cypioneer.ui.fragment.bottom.HomePageFragment;
 import com.mredrock.cypioneer.ui.fragment.bottom.InformationFragment;
@@ -92,7 +93,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Log.d(TAG, "onBackPressed");
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "onBackPressed");
+        }
         DelayClose.onBackPressed();
     }
 

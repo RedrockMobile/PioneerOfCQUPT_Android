@@ -23,6 +23,7 @@ import com.mredrock.cypioneer.R;
 import com.mredrock.cypioneer.presenter.ChangePasswordPresenter;
 import com.mredrock.cypioneer.ui.view.ChangePasswordView;
 
+
 public class ChangePassActivity extends AppCompatActivity implements ChangePasswordView {
     private static final String TAG = "ChangePassActivity--->";
 
