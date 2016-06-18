@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 import com.mredrock.cypioneer.model.bean.PhotoBean;
+
 import java.util.ArrayList;
 
 /**
@@ -18,16 +19,17 @@ import java.util.ArrayList;
 public class HomePagePictureAdapter extends StaticPagerAdapter {
     Fragment fragment;//待传入的的fragment
     ArrayList<PhotoBean.DataBean> carouselFigures;//轮播图的图片实体类
-    public  HomePagePictureAdapter(Fragment fragment, ArrayList<PhotoBean.DataBean> carouselFigures){
+
+    public HomePagePictureAdapter(Fragment fragment, ArrayList<PhotoBean.DataBean> carouselFigures) {
         this.fragment = fragment;
-        this.carouselFigures=carouselFigures;
+        this.carouselFigures = carouselFigures;
     }
+
     @Override
     public View getView(ViewGroup container, int position) {
-        Log.d("HomePagePictureAdapter", "getView: position"+carouselFigures.get(position).getImgurl());
+        Log.d("HomePagePictureAdapter", "getView: position" + carouselFigures.get(position).getImgurl());
         ImageView view = new ImageView(container.getContext());
-        String a = carouselFigures.get(position).getImgurl().replace(" ","");
-
+        String a = carouselFigures.get(position).getImgurl().replace(" ", "");
         Glide.with(fragment)
                 //.load(carouselFigures.get(position).getImgurl())
                 .load(a)

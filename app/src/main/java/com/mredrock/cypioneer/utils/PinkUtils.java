@@ -22,6 +22,10 @@ import java.text.DecimalFormat;
  * Utils
  */
 public class PinkUtils {
+    public static final int KB = 1024;
+    public static final int MB = 1024 * 1024;
+    public static final int GB = 1024 * 1024 * 1024;
+
     public static final String UNKNOWN_ERROR = "An unknown error occurred!";
     public static final String NETWORK_ERROR = "Network error!";
 

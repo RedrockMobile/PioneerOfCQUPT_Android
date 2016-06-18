@@ -37,6 +37,9 @@
         <activity
             android:name=".ui.activity.ChangePassActivity"
             android:label="@string/title_activity_change_pass"/>
+        <meta-data
+            android:name="com.mredrock.cypioneer.utils.MyGlideModule"
+            android:value="GlideModule"/>
     </application>
 
 </manifest>
