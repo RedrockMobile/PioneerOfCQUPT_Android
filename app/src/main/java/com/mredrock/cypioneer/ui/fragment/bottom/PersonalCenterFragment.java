@@ -99,7 +99,9 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         switch (v.getId()) {
             case R.id.person_username:
                 //需要一个回调来更新username
-                startActivity(new Intent(getActivity(), LoginActivity.class));
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                intent.putExtra("flag", true);
+                startActivity(intent);
                 break;
             case R.id.person_clear_cache:
                 Observable.from(Config.cacheDir.listFiles())
@@ -126,6 +128,7 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 Config.user = null;
                 SFUtil.getInstance().saveToken(null);
                 startActivity(new Intent(getActivity(), LoginActivity.class));
+                getActivity().finish();
                 break;
 
         }

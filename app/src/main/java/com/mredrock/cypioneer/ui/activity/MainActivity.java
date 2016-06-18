@@ -1,14 +1,13 @@
 package com.mredrock.cypioneer.ui.activity;
 
 
-
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.RadioGroup;
 import android.util.Log;
+import android.widget.RadioGroup;
 
 import com.mredrock.cypioneer.BuildConfig;
 import com.mredrock.cypioneer.R;
@@ -16,10 +15,10 @@ import com.mredrock.cypioneer.ui.fragment.bottom.HomePageFragment;
 import com.mredrock.cypioneer.ui.fragment.bottom.InformationFragment;
 import com.mredrock.cypioneer.ui.fragment.bottom.PersonalCenterFragment;
 import com.mredrock.cypioneer.ui.fragment.bottom.StudyDiscussionFragment;
+import com.mredrock.cypioneer.utils.DelayClose;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.mredrock.cypioneer.utils.DelayClose;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity--->";
@@ -44,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         fragments.add(new StudyDiscussionFragment());
         fragments.add(new PersonalCenterFragment());
     }
+
     private void initView() {
         /**
          * ----------------------BottomBar部分----------------------------------*/
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId){
+                switch (checkedId) {
                     case R.id.bottom_home_page:
                         FragmentTransaction transaction2 = fragmentManager.beginTransaction();
                         transaction2.replace(R.id.content, fragments.get(0));
@@ -90,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     public void onBackPressed() {
         if (BuildConfig.DEBUG) {
@@ -101,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         DelayClose.detachActivity(this);
+        super.onDestroy();
     }
 }

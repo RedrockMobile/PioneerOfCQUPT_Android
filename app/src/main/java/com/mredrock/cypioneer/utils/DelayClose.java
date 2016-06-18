@@ -6,8 +6,7 @@ import android.widget.Toast;
 
 import com.mredrock.cypioneer.R;
 
-import java.util.ArrayDeque;
-import java.util.Queue;
+import java.util.Stack;
 
 /**
  * Created by PinkD on 2016/6/14.
@@ -16,25 +15,41 @@ import java.util.Queue;
 public class DelayClose {
     private static final String TAG = "DelayClose--->";
     private static long last = 0;
-    private static Queue<Activity> activities = new ArrayDeque<>();
+    private static Stack<Activity> activities = new Stack<>();
 
     public static void attachActivity(Activity activity) {
-        activities.add(activity);
+        activities.push(activity);
+        Log.d(TAG, activity.toString().split("@")[0] + " attached");
     }
 
     public static void detachActivity(Activity activity) {
         if (activities.contains(activity)) {
             activities.remove(activity);
+            Log.d(TAG, activity.toString().split("@")[0] + " detached");
         }
     }
 
     public static void onBackPressed() {//poll = peek + remove
         long now = System.currentTimeMillis();
         if (now - last < 2000) {
-            activities.poll().finish();
+            activities.pop().finish();
         } else {
             last = now;
-            Toast.makeText(activities.peek(), R.string.press_again, Toast.LENGTH_SHORT).show();
+            try {
+                Toast.makeText(activities.peek(), R.string.press_again, Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void clearStackExcept(Activity activity) {
+        for (Activity tmp : activities) {
+            if (!activity.equals(tmp)) {
+                activities.remove(tmp);
+                Log.d(TAG, tmp.toString().split("@")[0] + " removed");
+                tmp.finish();
+            }
         }
     }
 }

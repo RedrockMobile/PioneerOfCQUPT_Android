@@ -6,6 +6,7 @@ import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -18,6 +19,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jude.swipbackhelper.SwipeBackHelper;
 import com.mredrock.cypioneer.R;
 import com.mredrock.cypioneer.presenter.LoginPresenter;
 import com.mredrock.cypioneer.ui.view.LoginView;
@@ -31,15 +33,20 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private boolean flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        DelayClose.attachActivity(this);
         setContentView(R.layout.activity_login);
+        flag = getIntent().getBooleanExtra("flag", false);
+        if (flag) {
+            SwipeBackHelper.onCreate(this);
+        } else {
+            DelayClose.attachActivity(this);
+        }
         loginPresenter = new LoginPresenter(this);
         mUsernameView = (AutoCompleteTextView) findViewById(R.id.login_username);
-
         mPasswordView = (EditText) findViewById(R.id.login_password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -137,28 +144,44 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     public void LoginSuccess() {
         showProgress(false);
         Toast.makeText(LoginActivity.this, R.string.login_success, Toast.LENGTH_SHORT).show();
+        DelayClose.clearStackExcept(this);
         startActivity(new Intent(LoginActivity.this, MainActivity.class));
         this.finish();
     }
 
     @Override
     public void LoginFail(int failCode, Throwable throwable) {
-        Log.d(TAG, "login--->" + throwable.toString());
+        Log.d(TAG, "LoginFail--->");
         throwable.printStackTrace();
         mPasswordView.setError(getString(R.string.login_fail));
-        LoginSuccess();
     }
 
 
     @Override
     public void onBackPressed() {
-        DelayClose.onBackPressed();
+        if (flag) {
+            SwipeBackHelper.finish(this);
+        } else {
+            DelayClose.onBackPressed();
+        }
+    }
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        if (flag) {
+            SwipeBackHelper.onPostCreate(this);
+        }
     }
 
     @Override
     protected void onDestroy() {
+        if (flag) {
+            SwipeBackHelper.onDestroy(this);
+        } else {
+            DelayClose.detachActivity(this);
+        }
         super.onDestroy();
-        DelayClose.detachActivity(this);
     }
 }
 
