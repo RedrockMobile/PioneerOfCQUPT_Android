@@ -1,6 +1,7 @@
 package com.mredrock.cypioneer.ui.fragment.bottom;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
@@ -16,6 +17,7 @@ import com.mredrock.cypioneer.App;
 import com.mredrock.cypioneer.R;
 import com.mredrock.cypioneer.model.bean.PhotoBean;
 import com.mredrock.cypioneer.net.HttpMethods;
+import com.mredrock.cypioneer.ui.activity.HomePageDtail;
 import com.mredrock.cypioneer.ui.adapter.HomePagePictureAdapter;
 import java.util.ArrayList;
 
@@ -128,15 +130,25 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()){
             case R.id.button_party_rules_c:
             case R.id.button_party_rules :
-                Toast.makeText(getContext(), "党规党章", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), HomePageDtail.class);
+                intent.putExtra("url","http://lxyz.12371.cn/dzdg/");
+                intent.putExtra("title","学党规党章");
+                startActivity(intent);
+
                 break;
             case R.id.button_series_speech_c:
             case R.id.button_series_speech:
-                Toast.makeText(getContext(), "系列讲话", Toast.LENGTH_SHORT).show();
+                Intent intent1 = new Intent(getContext(), HomePageDtail.class);
+                intent1.putExtra("url","http://www.12371.cn/special/xjpzyls/xxxjpzyls/");
+                intent1.putExtra("title","学系列讲话");
+                startActivity(intent1);
                 break;
             case R.id.button_qualified_members_c:
             case R.id.button_qualified_members:
-                Toast.makeText(getContext(), "合格党员", Toast.LENGTH_SHORT).show();
+                Intent intent2 = new Intent(getContext(), HomePageDtail.class);
+                intent2.putExtra("url","http://lxyz.12371.cn/xjdx/");
+                intent2.putExtra("title","做合格党员");
+                startActivity(intent2);
                 break;
             case R.id.button_internet_activity_c:
             case R.id.button_internet_activity:

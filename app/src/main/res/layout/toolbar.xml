@@ -8,6 +8,7 @@
         android:layout_height="60dp"
         android:background="@drawable/toolbar">
         <TextView
+            android:id="@+id/tv_title_toolbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="重邮先锋网“两学一做”学习专题网"
