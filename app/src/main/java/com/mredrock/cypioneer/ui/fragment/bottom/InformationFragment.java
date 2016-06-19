@@ -46,8 +46,9 @@ public class InformationFragment extends Fragment {
         infoFixedPageAdapter.setTitles(titles);//标题
         mFragments = new ArrayList<>();
         for (int i = 0; i < titles.length; i++) {
-            //传入标题和位置
-            mFragments.add(InfoPageFragment.newInstance(titles[i], ViewPagerPosion[i]));
+
+            //传入标题和page的id
+            mFragments.add(InfoPageFragment.newInstance(ViewPagerPosion[i]));
         }
         //把要显示的fragment集合传给adapter
         infoFixedPageAdapter.setFragments(mFragments);

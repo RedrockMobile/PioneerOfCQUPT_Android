@@ -24,8 +24,7 @@ import rx.Subscriber;
  */
 public class InfoPageFragment extends Fragment {
     public static final String TAG = "InfoPageFragment";
-    private static final String KEY_TITLE = "title";
-    private static final String KEY_POSITION = "position";
+    private static final String PAGER_ID = "position";
     private View mView;
 
     public RecyclerView newsList;
@@ -41,15 +40,13 @@ public class InfoPageFragment extends Fragment {
      * 在这里我们传入一个参数，用来得到title，和position
      * 然后我们拿到这个title设置给内容（测试时用）
      *
-     * @param title
      * @param position
      * @return
      */
-    public static InfoPageFragment newInstance(String title, int position) {
+    public static InfoPageFragment newInstance(int position) {
         //利用bundle传值
         Bundle bundle = new Bundle();
-        bundle.putString(KEY_TITLE, title);
-        bundle.putInt(KEY_POSITION, position);
+        bundle.putInt(PAGER_ID, position);
         //实例化
         InfoPageFragment fragment = new InfoPageFragment();
         fragment.setArguments(bundle);
@@ -63,8 +60,7 @@ public class InfoPageFragment extends Fragment {
         //取出保存在Bundle中的值
         Bundle bundle = getArguments();
         if (bundle != null) {
-            title = bundle.getString(KEY_TITLE);
-            fragment_data_id = bundle.getInt(KEY_POSITION);
+            fragment_data_id = bundle.getInt(PAGER_ID);
         }
         if (mView == null) {
             mView = inflater.inflate(R.layout.fragment_info_viewpager_page, container, false);
@@ -100,7 +96,6 @@ public class InfoPageFragment extends Fragment {
             @Override
             public void onCompleted() {
                 //请求完成，换句话说，所有的newslistBean都仍到list里面去了
-                //然后就可以执行把arrayList给recyclerView的adapter之类的操作了
                 //数据加载完成，启动recyclerview
                 setRecyclerView();
             }
