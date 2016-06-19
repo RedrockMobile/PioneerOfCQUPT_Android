@@ -15,6 +15,7 @@ import com.mredrock.cypioneer.ui.fragment.bottom.HomePageFragment;
 import com.mredrock.cypioneer.ui.fragment.bottom.InformationFragment;
 import com.mredrock.cypioneer.ui.fragment.bottom.PersonalCenterFragment;
 import com.mredrock.cypioneer.ui.fragment.bottom.StudyDiscussionFragment;
+import com.mredrock.cypioneer.ui.fragment.pager.InfoPageFragment;
 import com.mredrock.cypioneer.utils.DelayClose;
 
 import java.util.ArrayList;
@@ -73,7 +74,8 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.bottom_study_discussion:
                         FragmentTransaction transaction4 = fragmentManager.beginTransaction();
-                        transaction4.replace(R.id.content, fragments.get(2));
+                        InfoPageFragment infoPageFragment = InfoPageFragment.newInstance("学习资料", 5);
+                        transaction4.replace(R.id.content, infoPageFragment);
                         transaction4.commit();
                         break;
                     case R.id.bottom_personal_center:

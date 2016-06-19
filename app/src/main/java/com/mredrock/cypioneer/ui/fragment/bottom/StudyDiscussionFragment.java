@@ -52,7 +52,6 @@ public class StudyDiscussionFragment extends Fragment {
                 //在Activity里new一个list，把dataBean扔进去就行了
                 //举个例子:
                 mDataBeen.add(dataBean);
-
             }
 
             @Override
