@@ -1,5 +1,6 @@
 package com.mredrock.cypioneer.net;
 
+import com.mredrock.cypioneer.cfg.Api;
 import com.mredrock.cypioneer.model.bean.NewsDetailBean;
 import com.mredrock.cypioneer.model.bean.NewsListBean;
 import com.mredrock.cypioneer.model.bean.PhotoBean;
@@ -21,7 +22,6 @@ import rx.schedulers.Schedulers;
  * Have a good day.
  */
 public class HttpMethods {
-    public static final String BASE_URL = "http://202.202.43.42/lxyz/";
     private static final int DEFAULT_TIMEOUT = 5;
 
     private Retrofit mRetrofit;
@@ -35,7 +35,7 @@ public class HttpMethods {
                 .client(httpClientBuilder.build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .baseUrl(BASE_URL)
+                .baseUrl(Api.BASE_URL)
                 .build();
         mINet = mRetrofit.create(INet.class);
     }

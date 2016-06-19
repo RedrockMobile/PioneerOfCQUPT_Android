@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.mredrock.cypioneer.ui.activity.HomePageDtail">
+
     <include
+        android:id="@+id/toolbar_include"
         layout="@layout/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/toolbar_include" />
+        android:layout_height="wrap_content" />
+
     <WebView
         android:id="@+id/web_view_homepage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar_include" />
     <!--<ProgressBar-->
-        <!--style="?android:attr/progressBarStyleHorizontal"-->
-        <!--android:id="@+id/myProgressBar"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="5dp"-->
-        <!--android:indeterminate="false"-->
-        <!--android:layout_below="@+id/toolbar_include" />-->
+    <!--style="?android:attr/progressBarStyleHorizontal"-->
+    <!--android:id="@+id/myProgressBar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="5dp"-->
+    <!--android:indeterminate="false"-->
+    <!--android:layout_below="@+id/toolbar_include" />-->
 </RelativeLayout>

@@ -7,11 +7,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.mredrock.cypioneer.R;
 import com.mredrock.cypioneer.model.bean.NewsListBean;
-import com.mredrock.cypioneer.model.bean.PhotoBean;
 import com.mredrock.cypioneer.net.HttpMethods;
 
 import java.util.ArrayList;
@@ -59,12 +57,12 @@ public class StudyDiscussionFragment extends Fragment {
                 //请求完成，换句话说，所有的newslistBean都仍到list里面去了
                 //然后就可以执行把arrayList给recyclerView的adapter之类的操作了
                 Log.d(TAG, "onCompleted: 请求完成啦！！！");
-                for(int i=0;i<mDataBeen.size();i++){
-                    Log.d(TAG, "onCompleted: "+mDataBeen.get(i).getContent());
+                for (int i = 0; i < mDataBeen.size(); i++) {
+                    Log.d(TAG, "onCompleted: " + mDataBeen.get(i).getContent());
                 }
             }
         };
 
-        HttpMethods.getInstance().getNewsList(subscriber,1,2);
+        HttpMethods.getInstance().getNewsList(subscriber, 1, 2);
     }
 }

@@ -2,10 +2,8 @@ package com.mredrock.cypioneer.ui.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
@@ -19,20 +17,21 @@ public class HomePageDtail extends AppCompatActivity {
     String mUrl;
     String mTitle;
     private ProgressDialog progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page_dtail);
 
         //获取URL和title
-        Intent intent =getIntent();
-        mUrl=intent.getStringExtra("url");
+        Intent intent = getIntent();
+        mUrl = intent.getStringExtra("url");
         mTitle = intent.getStringExtra("title");
 
         tv = (TextView) findViewById(R.id.tv_title_toolbar);
         tv.setText(mTitle);
 
-        webView= (WebView) findViewById(R.id.web_view_homepage);
+        webView = (WebView) findViewById(R.id.web_view_homepage);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient() {
             @Override

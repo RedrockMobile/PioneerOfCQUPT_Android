@@ -108,15 +108,17 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
                 } else {
                     stack.push(Config.PLAY.a);
                     if (stack.equals(Config.PLAY.getTargetStack())) {
-                        Snackbar.make(v, "             ???", Snackbar.LENGTH_SHORT).show();
+                        Snackbar.make(v, "test", Snackbar.LENGTH_SHORT).show();
                         try {
                             if (dialog == null) {
                                 dialog = new Dialog(this);
+                                dialog.setTitle("???");
                                 ImageView gifView = new ImageView(this);
                                 Glide.with(this).load(PinkUtils.getTargetGifByte(this, "play.gif")).into(gifView);
                                 gifView.setImageResource(R.color.none);
                                 dialog.setContentView(gifView, new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-                            }dialog.show();
+                            }
+                            dialog.show();
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
