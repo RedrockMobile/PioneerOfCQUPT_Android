@@ -1,14 +1,17 @@
 package com.mredrock.cypioneer.ui.adapter;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 import com.mredrock.cypioneer.model.bean.PhotoBean;
+import com.mredrock.cypioneer.ui.activity.HomePageDtail;
 
 import java.util.ArrayList;
 
@@ -26,7 +29,7 @@ public class HomePagePictureAdapter extends StaticPagerAdapter {
     }
 
     @Override
-    public View getView(ViewGroup container, int position) {
+    public View getView(ViewGroup container, final int position) {
         Log.d("HomePagePictureAdapter", "getView: position" + carouselFigures.get(position).getImgurl());
         ImageView view = new ImageView(container.getContext());
         Glide.with(fragment)
@@ -35,6 +38,16 @@ public class HomePagePictureAdapter extends StaticPagerAdapter {
 
         view.setScaleType(ImageView.ScaleType.CENTER_CROP);
         view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(fragment.getContext(), HomePageDtail.class);
+                intent.putExtra("title",carouselFigures.get(position).getTitle());
+                intent.putExtra("url",carouselFigures.get(position).getLink());
+                fragment.getActivity().startActivity(intent);
+
+            }
+        });
         return view;
     }
 

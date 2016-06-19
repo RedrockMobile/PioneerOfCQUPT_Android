@@ -14,6 +14,7 @@
             android:text="重邮先锋网“两学一做”学习专题网"
             android:textColor="#fff"
             android:textSize="15sp"
+            android:maxLines="1"
             />
     </android.support.v7.widget.Toolbar>
 </LinearLayout>
