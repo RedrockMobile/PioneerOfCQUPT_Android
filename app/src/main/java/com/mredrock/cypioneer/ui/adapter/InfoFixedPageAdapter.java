@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * 资讯界面的ViewPager的Adapter
- *  Created by xushuzhan on 2016/6/15.
+ * Created by xushuzhan on 2016/6/15.
  */
 public class InfoFixedPageAdapter extends FragmentStatePagerAdapter {
     private String[] titles;
@@ -27,6 +27,7 @@ public class InfoFixedPageAdapter extends FragmentStatePagerAdapter {
     public void setFragments(List<Fragment> fragments) {
         mFragments = fragments;
     }
+
     /**
      * 这个是在继承FragmentStatePagerAdapter时强制写入的
      *
@@ -53,6 +54,7 @@ public class InfoFixedPageAdapter extends FragmentStatePagerAdapter {
 
     /**
      * 这个同destroyItem（）相反，是对于给定的位置创建视图，适配器往container中添加
+     *
      * @param container
      * @param position
      * @return
@@ -67,6 +69,7 @@ public class InfoFixedPageAdapter extends FragmentStatePagerAdapter {
     /**
      * 移除给定位置的数据，适配器负责从container（容器）中取出，但是这个必须保证是在finishUpdate（view）
      * 返回的时间内完成
+     *
      * @param container
      * @param position
      * @param object
@@ -79,6 +82,7 @@ public class InfoFixedPageAdapter extends FragmentStatePagerAdapter {
 
     /**
      * 得到滑动页面的Title
+     *
      * @param position
      * @return
      */
@@ -86,7 +90,6 @@ public class InfoFixedPageAdapter extends FragmentStatePagerAdapter {
     public CharSequence getPageTitle(int position) {
         return titles[position];
     }
-
 
 
 }

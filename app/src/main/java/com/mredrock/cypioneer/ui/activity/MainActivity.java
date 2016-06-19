@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.bottom_study_discussion:
                         FragmentTransaction transaction4 = fragmentManager.beginTransaction();
-                        InfoPageFragment infoPageFragment = InfoPageFragment.newInstance("学习资料", 5);
+                        InfoPageFragment infoPageFragment = InfoPageFragment.newInstance(5);
                         transaction4.replace(R.id.content, infoPageFragment);
                         transaction4.commit();
                         break;
