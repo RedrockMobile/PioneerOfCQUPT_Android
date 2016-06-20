@@ -7,4 +7,6 @@
     <color name="black_overlay">#66000000</color>
     <color name="tianyi_blue">#66CCFF</color>
     <color name="none">#0000</color>
+    <color name="white">#FFF</color>
+    <color name="boot_background">#FFF</color>
 </resources>
