@@ -1,5 +1,6 @@
 package com.mredrock.cypioneer.ui.fragment.pager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.mredrock.cypioneer.R;
 import com.mredrock.cypioneer.model.bean.NewsListBean;
 import com.mredrock.cypioneer.net.HttpMethods;
+import com.mredrock.cypioneer.ui.activity.NewsDetailActivity;
 import com.mredrock.cypioneer.ui.adapter.InfoListAdapter;
 
 import java.util.ArrayList;
@@ -67,11 +69,20 @@ public class InfoPageFragment extends Fragment {
         return mView;
     }
 
-    private void setRecyclerView() {
+    public void setRecyclerView() {
         newsList = (RecyclerView) mView.findViewById(R.id.info_recyclerview);
         newsList.setLayoutManager(new LinearLayoutManager(getContext()));
         newsListAdapter = new InfoListAdapter(newsListInfo);
         newsList.setAdapter(newsListAdapter);
+
+        newsListAdapter.setOnItemClickListener(new InfoListAdapter.OnRecyclerViewItemClickListener() {
+            @Override
+            public void onItemClick(View v, String newsId) {
+                Intent intent = new Intent(getContext(), NewsDetailActivity.class);
+                intent.putExtra("news_id",newsId);
+                startActivity(intent);
+            }
+        });
     }
 
     public void getNewList(int page, int id) {
