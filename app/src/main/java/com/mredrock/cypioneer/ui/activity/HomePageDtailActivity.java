@@ -11,14 +11,12 @@ import android.widget.TextView;
 
 import com.mredrock.cypioneer.R;
 
-public class HomePageDtail extends AppCompatActivity {
+public class HomePageDtailActivity extends AppCompatActivity {
     TextView tv;
     TextView sub_tv;
     WebView webView;
     String mUrl;
     String mTitle;
-    private ProgressDialog progressBar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
