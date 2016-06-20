@@ -40,7 +40,7 @@ public class HttpMethods {
         mINet = mRetrofit.create(INet.class);
     }
 
-    private static class SingletonHolder{
+    private static class SingletonHolder {
         private static final HttpMethods INSTANCE = new HttpMethods();
     }
 
@@ -50,8 +50,9 @@ public class HttpMethods {
 
     /**
      * 资讯列表
+     *
      * @param page 起始数字为1
-     * @param id 2->通知公告 3->工作动态 4->基层行动 5->学习资料
+     * @param id   2->通知公告 3->工作动态 4->基层行动 5->学习资料
      */
     public void getNewsList(Subscriber<NewsListBean.DataBean> subscriber, int page, int id) {
         mINet.getNewsList(page, id)
@@ -61,6 +62,13 @@ public class HttpMethods {
                 .flatMap(new Func1<NewsListBean, Observable<NewsListBean.DataBean>>() {
                     @Override
                     public Observable<NewsListBean.DataBean> call(NewsListBean newsListBean) {
+                        for (int i = 0; i < newsListBean.getData().size(); i++) {
+                            String contentToFix = newsListBean.getData().get(i).getContent()
+                                    .replaceAll("&.{4,5};|[\r\n\t]", "")
+                                    .replaceAll("^\\s+", "")
+                                    .replaceAll("&.{1,5}[a-z]", "");
+                            newsListBean.getData().get(i).setContent(contentToFix);
+                        }
                         return Observable.from(newsListBean.getData());
                     }
                 })
@@ -85,7 +93,8 @@ public class HttpMethods {
     }
 
     /**
-     *  资讯正文
+     * 资讯正文
+     *
      * @param id 从列表中拿，不区分类型
      */
     public void getNewsDetail(Subscriber<NewsDetailBean> subscriber, int id) {
@@ -93,6 +102,17 @@ public class HttpMethods {
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .map(new Func1<NewsDetailBean, NewsDetailBean>() {
+                    @Override
+                    public NewsDetailBean call(NewsDetailBean newsDetailBean) {
+                        String fix = newsDetailBean.getData().getContent()
+                                .replaceAll("&.{4,5};|[\r\n\t]", "")
+                                .replaceAll("^\\s+", "")
+                                .replaceAll("&.{1,5}[a-z]", "");
+                        newsDetailBean.getData().setContent(fix);
+                        return newsDetailBean;
+                    }
+                })
                 .subscribe(subscriber);
     }
 }
