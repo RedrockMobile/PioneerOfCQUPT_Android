@@ -21,28 +21,22 @@ public class InfoListAdapter extends RecyclerView.Adapter<InfoListAdapter.MyView
 
     public ArrayList<NewsListBean.DataBean> newsListInfo;
 
-    public InfoListAdapter(ArrayList<NewsListBean.DataBean> newsListInfo){
-        this.newsListInfo=newsListInfo;
+    public InfoListAdapter(ArrayList<NewsListBean.DataBean> newsListInfo) {
+        this.newsListInfo = newsListInfo;
     }
+
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_news_list,parent,false);
-        MyViewHolder holder = new MyViewHolder(view);
-        return holder;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_news_list, parent, false);
+        return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        try{
-            String content=newsListInfo.get(position).getContent().replaceAll("&.{4,5};|[\r\n\t]","").replaceAll("^\\s+","").replaceAll("&.{1,5}[a-z]","");
-            Log.d("onBindViewHolder", "onBindViewHolder: +"+content);
+        String content = newsListInfo.get(position).getContent();
         holder.title.setText(newsListInfo.get(position).getTitle());
         holder.content.setText(content);
         holder.time.setText(newsListInfo.get(position).getTime());
-        }catch (Exception e){
-            Log.d("InfoListAdapter", "onBindViewHolder: "+e.getMessage());
-            Toast.makeText(App.mContext, "抱歉，出了点小问题/(ㄒoㄒ)/~~", Toast.LENGTH_SHORT).show();
-        }
     }
 
     @Override
@@ -54,10 +48,11 @@ public class InfoListAdapter extends RecyclerView.Adapter<InfoListAdapter.MyView
         TextView title;
         TextView content;
         TextView time;
+
         public MyViewHolder(View itemView) {
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.item_info_title);
-            content= (TextView) itemView.findViewById(R.id.item_info_content);
+            content = (TextView) itemView.findViewById(R.id.item_info_content);
             time = (TextView) itemView.findViewById(R.id.item_info_time);
         }
     }
