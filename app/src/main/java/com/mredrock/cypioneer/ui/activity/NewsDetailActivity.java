@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mredrock.cypioneer.R;
 import com.mredrock.cypioneer.model.bean.NewsDetailBean;
@@ -15,7 +16,7 @@ import rx.Subscriber;
 public class NewsDetailActivity extends AppCompatActivity {
     TextView tv_title;
     TextView tv_sub_title;
-    int newsId;
+    String newsId;
     String newsDtail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,8 @@ public class NewsDetailActivity extends AppCompatActivity {
         tv_sub_title.setText("");
 
         Intent intent  = getIntent();
-        newsId = intent.getIntExtra("news_id",0);
+        newsId = intent.getStringExtra("news_id");
+        Toast.makeText(NewsDetailActivity.this, newsId, Toast.LENGTH_SHORT).show();
     }
 
 }
