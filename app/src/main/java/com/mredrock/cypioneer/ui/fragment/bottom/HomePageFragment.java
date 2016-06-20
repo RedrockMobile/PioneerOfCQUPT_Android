@@ -13,11 +13,10 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.jude.rollviewpager.RollPagerView;
-import com.mredrock.cypioneer.App;
 import com.mredrock.cypioneer.R;
 import com.mredrock.cypioneer.model.bean.PhotoBean;
 import com.mredrock.cypioneer.net.HttpMethods;
-import com.mredrock.cypioneer.ui.activity.HomePageDtail;
+import com.mredrock.cypioneer.ui.activity.HomePageDtailActivity;
 import com.mredrock.cypioneer.ui.adapter.HomePagePictureAdapter;
 import java.util.ArrayList;
 
@@ -130,7 +129,7 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()){
             case R.id.button_party_rules_c:
             case R.id.button_party_rules :
-                Intent intent = new Intent(getContext(), HomePageDtail.class);
+                Intent intent = new Intent(getContext(), HomePageDtailActivity.class);
                 intent.putExtra("url","http://lxyz.12371.cn/dzdg/");
                 intent.putExtra("title","学党规党章");
                 startActivity(intent);
@@ -138,35 +137,35 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.button_series_speech_c:
             case R.id.button_series_speech:
-                Intent intent1 = new Intent(getContext(), HomePageDtail.class);
+                Intent intent1 = new Intent(getContext(), HomePageDtailActivity.class);
                 intent1.putExtra("url","http://www.12371.cn/special/xjpzyls/xxxjpzyls/");
                 intent1.putExtra("title","学系列讲话");
                 startActivity(intent1);
                 break;
             case R.id.button_qualified_members_c:
             case R.id.button_qualified_members:
-                Intent intent2 = new Intent(getContext(), HomePageDtail.class);
+                Intent intent2 = new Intent(getContext(), HomePageDtailActivity.class);
                 intent2.putExtra("url","http://lxyz.12371.cn/xjdx/");
                 intent2.putExtra("title","做合格党员");
                 startActivity(intent2);
                 break;
             case R.id.button_internet_activity_c:
             case R.id.button_internet_activity:
-                Intent intent3 = new Intent(getContext(), HomePageDtail.class);
+                Intent intent3 = new Intent(getContext(), HomePageDtailActivity.class);
                 intent3.putExtra("url","https://redrock.cqupt.edu.cn/lxyz_activity/");
                 intent3.putExtra("title","网络活动");
                 startActivity(intent3);
                 break;
             case R.id.button_advanced_model_c:
             case R.id.button_advanced_model:
-                Intent intent4 = new Intent(getContext(), HomePageDtail.class);
+                Intent intent4 = new Intent(getContext(), HomePageDtailActivity.class);
                 intent4.putExtra("url","http://lxyz.12371.cn/xjdx/");
                 intent4.putExtra("title","先进典型");
                 startActivity(intent4);
                 break;
             case R.id.button_classic_movie_c:
             case R.id.button_classic_movie:
-                Intent intent5 = new Intent(getContext(), HomePageDtail.class);
+                Intent intent5 = new Intent(getContext(), HomePageDtailActivity.class);
                 intent5.putExtra("url","http://lxyz.12371.cn/jdyx/");
                 intent5.putExtra("title","经典影像");
                 startActivity(intent5);
