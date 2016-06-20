@@ -35,8 +35,10 @@ public class InfoListAdapter extends RecyclerView.Adapter<InfoListAdapter.MyView
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
         try{
+            String content=newsListInfo.get(position).getContent().replaceAll("&.{4,5};|[\r\n\t]","").replaceAll("^\\s+","").replaceAll("&.{1,5}[a-z]","");
+            Log.d("onBindViewHolder", "onBindViewHolder: +"+content);
         holder.title.setText(newsListInfo.get(position).getTitle());
-        holder.content.setText(newsListInfo.get(position).getContent());
+        holder.content.setText(content);
         holder.time.setText(newsListInfo.get(position).getTime());
         }catch (Exception e){
             Log.d("InfoListAdapter", "onBindViewHolder: "+e.getMessage());

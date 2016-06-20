@@ -152,15 +152,24 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.button_internet_activity_c:
             case R.id.button_internet_activity:
-                Toast.makeText(getContext(), "网络活动", Toast.LENGTH_SHORT).show();
+                Intent intent3 = new Intent(getContext(), HomePageDtail.class);
+                intent3.putExtra("url","https://redrock.cqupt.edu.cn/lxyz_activity/");
+                intent3.putExtra("title","网络活动");
+                startActivity(intent3);
                 break;
             case R.id.button_advanced_model_c:
             case R.id.button_advanced_model:
-                Toast.makeText(getContext(), "先进典型", Toast.LENGTH_SHORT).show();
+                Intent intent4 = new Intent(getContext(), HomePageDtail.class);
+                intent4.putExtra("url","http://lxyz.12371.cn/xjdx/");
+                intent4.putExtra("title","先进典型");
+                startActivity(intent4);
                 break;
             case R.id.button_classic_movie_c:
             case R.id.button_classic_movie:
-                Toast.makeText(getContext(), "经典影像", Toast.LENGTH_SHORT).show();
+                Intent intent5 = new Intent(getContext(), HomePageDtail.class);
+                intent5.putExtra("url","http://lxyz.12371.cn/jdyx/");
+                intent5.putExtra("title","经典影像");
+                startActivity(intent5);
                 break;
             default:
                 break;

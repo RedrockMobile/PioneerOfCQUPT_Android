@@ -26,7 +26,7 @@ public class InformationFragment extends Fragment {
     private InfoFixedPageAdapter infoFixedPageAdapter;
 
 
-    //设置ViewPager的3个fragmrnt数据对应的ID的数组
+    //设置ViewPager的3个fragmrnt的PageId的数组
     int ViewPagerPosion[] = new int[]{2, 3, 4};
     //储存fragment的数组
     private List<android.support.v4.app.Fragment> mFragments;

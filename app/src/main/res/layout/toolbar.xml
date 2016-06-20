@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@drawable/toolbar">
-        <TextView
-            android:id="@+id/tv_title_toolbar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="重邮先锋网“两学一做”学习专题网"
-            android:textColor="#fff"
-            android:textSize="15sp"
-            android:maxLines="1"
-            />
-    </android.support.v7.widget.Toolbar>
-</LinearLayout>
+        android:background="@drawable/toolbar"></android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/tv_title_toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="重邮先锋网"
+        android:textColor="#fff"
+        android:textSize="16sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp" />
+    <TextView
+        android:id="@+id/tv_sub_title_toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="“两学一做”学习专题网"
+        android:textColor="#fff"
+        android:textSize="11sp"
+        android:layout_below="@+id/tv_title_toolbar"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

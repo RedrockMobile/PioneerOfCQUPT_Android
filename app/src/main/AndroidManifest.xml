@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -28,15 +27,19 @@
         <activity
             android:name=".ui.activity.LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".ui.activity.AboutActivity"
-            android:label="@string/about"/>
+        <activity
+            android:name=".ui.activity.AboutActivity"
+            android:label="@string/about" />
         <activity
             android:name=".ui.activity.ChangePassActivity"
-            android:label="@string/title_activity_change_pass"/>
+            android:label="@string/title_activity_change_pass" />
+
         <meta-data
             android:name="com.mredrock.cypioneer.utils.MyGlideModule"
-            android:value="GlideModule"/>
-        <activity android:name=".ui.activity.HomePageDtail"></activity>
+            android:value="GlideModule" />
+
+        <activity android:name=".ui.activity.HomePageDtail" />
+        <activity android:name=".ui.activity.NewsDetailActivity"></activity>
     </application>
 
 </manifest>

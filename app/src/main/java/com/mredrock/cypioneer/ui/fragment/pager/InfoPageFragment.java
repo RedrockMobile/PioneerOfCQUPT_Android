@@ -31,22 +31,19 @@ public class InfoPageFragment extends Fragment {
     public InfoListAdapter newsListAdapter;
     private ArrayList<NewsListBean.DataBean> newsListInfo;
 
-    private TextView mTextView;//测试时用的文本框
-    private String title;//设置给测试文本的标题
-    private int fragment_data_id;//viewpager的fragment对用数据的id
+    private int fragment_data_id;//viewpager的fragment数据的id
 
     /**
      * 在这里提供一个静态的方法来实例化PageFragment
-     * 在这里我们传入一个参数，用来得到title，和position
-     * 然后我们拿到这个title设置给内容（测试时用）
+     * 在这里我们传入一个参数，用来得到pageId
      *
-     * @param position
+     * @param pageId
      * @return
      */
-    public static InfoPageFragment newInstance(int position) {
+    public static InfoPageFragment newInstance(int pageId) {
         //利用bundle传值
         Bundle bundle = new Bundle();
-        bundle.putInt(PAGER_ID, position);
+        bundle.putInt(PAGER_ID, pageId);
         //实例化
         InfoPageFragment fragment = new InfoPageFragment();
         fragment.setArguments(bundle);

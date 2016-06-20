@@ -16,7 +16,7 @@ public class InfoFixedPageAdapter extends FragmentStatePagerAdapter {
     private List<Fragment> mFragments;
 
     /**
-     * 设置标题
+     * 接收传入的Tab选项卡的标题
      *
      * @param titles
      */
@@ -24,12 +24,17 @@ public class InfoFixedPageAdapter extends FragmentStatePagerAdapter {
         this.titles = titles;
     }
 
+    /**
+     * 接收传入的需要显示的Fragment
+     *
+     * @param fragments
+     */
     public void setFragments(List<Fragment> fragments) {
         mFragments = fragments;
     }
 
     /**
-     * 这个是在继承FragmentStatePagerAdapter时强制写入的
+     * 这个是在继承FragmentStatePagerAdapter时写入的构造方法
      *
      * @param fm
      */
@@ -43,7 +48,7 @@ public class InfoFixedPageAdapter extends FragmentStatePagerAdapter {
     }
 
     /**
-     * 返回可以用的view的个数
+     * 返回要显示的Fragment的个数
      *
      * @return
      */
@@ -53,35 +58,7 @@ public class InfoFixedPageAdapter extends FragmentStatePagerAdapter {
     }
 
     /**
-     * 这个同destroyItem（）相反，是对于给定的位置创建视图，适配器往container中添加
-     *
-     * @param container
-     * @param position
-     * @return
-     */
-    @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        Fragment fragment = null;
-        fragment = (Fragment) super.instantiateItem(container, position);
-        return fragment;
-    }
-
-    /**
-     * 移除给定位置的数据，适配器负责从container（容器）中取出，但是这个必须保证是在finishUpdate（view）
-     * 返回的时间内完成
-     *
-     * @param container
-     * @param position
-     * @param object
-     */
-    @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-        super.destroyItem(container, position, object);
-
-    }
-
-    /**
-     * 得到滑动页面的Title
+     * 返回Tab选项卡里的Title
      *
      * @param position
      * @return
@@ -90,6 +67,4 @@ public class InfoFixedPageAdapter extends FragmentStatePagerAdapter {
     public CharSequence getPageTitle(int position) {
         return titles[position];
     }
-
-
 }
