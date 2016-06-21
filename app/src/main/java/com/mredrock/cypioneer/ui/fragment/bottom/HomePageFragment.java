@@ -2,6 +2,7 @@ package com.mredrock.cypioneer.ui.fragment.bottom;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
@@ -51,6 +52,9 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
     Button advancedModel;
     Button classicalMovie;
 
+    Button bt1;
+    Button bt2;
+    Button bt3;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home_page, container, false);
         return view;
@@ -91,6 +95,36 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
         internetActvitis.setOnClickListener(this);
         advancedModel.setOnClickListener(this);
         classicalMovie.setOnClickListener(this);
+
+        bt1 = (Button) view.findViewById(R.id.button_1);
+        bt1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("http://lxyz.12371.cn/"));
+                startActivity(intent);
+            }
+        });
+
+        bt2 = (Button) view.findViewById(R.id.button_2);
+        bt2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("http://www.12371.gov.cn/Category_1130/Index.aspx"));
+                startActivity(intent);
+            }
+        });
+
+        bt3= (Button) view.findViewById(R.id.button_3);
+        bt3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("http://www.cqedu.cn/Category_308/Index.aspx"));
+                startActivity(intent);
+            }
+        });
 
     }
 
