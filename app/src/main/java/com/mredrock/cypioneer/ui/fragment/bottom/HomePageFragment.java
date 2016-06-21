@@ -32,6 +32,7 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
     public static final String TAG = "HomePageFragment";
     private ArrayList<PhotoBean.DataBean> carouselFigures;//轮播图实体类数组
     private boolean cleared;
+    private boolean initialized;
 
     RollPagerView mRollPagerView;
     HomePagePictureAdapter homePagePictureAdapter;
@@ -71,8 +72,8 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
     }
 
     private void setRollPagerView() {
-        if (mRollPagerView == null) {//初始化，从SharedPreference读取地址，从磁盘读取缓存
-            mRollPagerView = (RollPagerView) view.findViewById(R.id.Carousel_figure);
+        if (carouselFigures.isEmpty()) {//初始化，从SharedPreference读取地址，从磁盘读取缓存
+//            mRollPagerView = (RollPagerView) view.findViewById(R.id.Carousel_figure);
             Set<String> tmp = SFUtil.getInstance().getUrls();
             if (tmp != null) {
                 for (String s : tmp) {
@@ -81,13 +82,14 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
                 }
             }
             homePagePictureAdapter = new HomePagePictureAdapter(HomePageFragment.this, carouselFigures);
-            mRollPagerView.setAdapter(homePagePictureAdapter);
         }
-        homePagePictureAdapter.notifyDataSetChanged();
+        mRollPagerView = (RollPagerView) view.findViewById(R.id.Carousel_figure);
+        mRollPagerView.setAdapter(homePagePictureAdapter);
+//        homePagePictureAdapter.notifyDataSetChanged();
+        cleared = false;
     }
 
     public void getPhotos() {
-        homePagePictureAdapter.notifyDataSetChanged();
         Subscriber<PhotoBean.DataBean> subscriber = new Subscriber<PhotoBean.DataBean>() {
             @Override
             public void onError(Throwable e) {
@@ -106,6 +108,7 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
                 //在Activity里new一个list，把dataBean扔进去就行了
                 //举个例子:
                 carouselFigures.add(dataBean);
+                carouselFigures.add(new PhotoBean.DataBean("http://hongyan.cqupt.edu.cn/images/index_top.jpg"));
                 Log.d(TAG, "onNext: " + carouselFigures.get(0).getImgurl());
             }
 
@@ -119,11 +122,13 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
                     urls.add(tmp.getImgurl());
                 }
                 SFUtil.getInstance().saveUrls(urls);
+                initialized = true;
                 setRollPagerView();//启动轮播图
             }
         };
-
-        HttpMethods.getInstance().getPhotos(subscriber);
+        if (!initialized) {
+            HttpMethods.getInstance().getPhotos(subscriber);
+        }
     }
 
     @Override
