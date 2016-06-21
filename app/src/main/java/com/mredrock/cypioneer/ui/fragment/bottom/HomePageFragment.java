@@ -16,9 +16,13 @@ import com.jude.rollviewpager.RollPagerView;
 import com.mredrock.cypioneer.R;
 import com.mredrock.cypioneer.model.bean.PhotoBean;
 import com.mredrock.cypioneer.net.HttpMethods;
-import com.mredrock.cypioneer.ui.activity.HomePageDtailActivity;
+import com.mredrock.cypioneer.ui.activity.HomePageDtail;
 import com.mredrock.cypioneer.ui.adapter.HomePagePictureAdapter;
+import com.mredrock.cypioneer.utils.SFUtil;
+
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import rx.Subscriber;
 
@@ -32,6 +36,7 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
 
     //朱大的库太方便了
     RollPagerView mRollPagerView;
+    HomePagePictureAdapter homePagePictureAdapter;
     View view;
     CardView partyRules_c;
     CardView seriesSpeech_c;
@@ -45,6 +50,7 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
     Button internetActvitis;
     Button advancedModel;
     Button classicalMovie;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home_page, container, false);
         return view;
@@ -53,18 +59,19 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        carouselFigures=new ArrayList<>();
+        carouselFigures = new ArrayList<>();
+        setRollPagerView();
         initView();
         getPhotos();
     }
 
     private void initView() {
-        partyRules_c= (CardView) view.findViewById(R.id.button_party_rules_c);
-        seriesSpeech_c= (CardView) view.findViewById(R.id.button_series_speech_c);
-        qualifiedMembers_c= (CardView) view.findViewById(R.id.button_qualified_members_c);
-        internetActvitis_c= (CardView) view.findViewById(R.id.button_internet_activity_c);
-        advancedModel_c= (CardView) view.findViewById(R.id.button_advanced_model_c);
-        classicalMovie_c= (CardView) view.findViewById(R.id.button_classic_movie_c);
+        partyRules_c = (CardView) view.findViewById(R.id.button_party_rules_c);
+        seriesSpeech_c = (CardView) view.findViewById(R.id.button_series_speech_c);
+        qualifiedMembers_c = (CardView) view.findViewById(R.id.button_qualified_members_c);
+        internetActvitis_c = (CardView) view.findViewById(R.id.button_internet_activity_c);
+        advancedModel_c = (CardView) view.findViewById(R.id.button_advanced_model_c);
+        classicalMovie_c = (CardView) view.findViewById(R.id.button_classic_movie_c);
         partyRules_c.setOnClickListener(this);
         seriesSpeech_c.setOnClickListener(this);
         qualifiedMembers_c.setOnClickListener(this);
@@ -72,12 +79,12 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
         advancedModel_c.setOnClickListener(this);
         classicalMovie_c.setOnClickListener(this);
 
-        partyRules= (Button) view.findViewById(R.id.button_party_rules);
-        seriesSpeech= (Button) view.findViewById(R.id.button_series_speech);
-        qualifiedMembers= (Button) view.findViewById(R.id.button_qualified_members);
-        internetActvitis= (Button) view.findViewById(R.id.button_internet_activity);
-        advancedModel= (Button) view.findViewById(R.id.button_advanced_model);
-        classicalMovie= (Button) view.findViewById(R.id.button_classic_movie);
+        partyRules = (Button) view.findViewById(R.id.button_party_rules);
+        seriesSpeech = (Button) view.findViewById(R.id.button_series_speech);
+        qualifiedMembers = (Button) view.findViewById(R.id.button_qualified_members);
+        internetActvitis = (Button) view.findViewById(R.id.button_internet_activity);
+        advancedModel = (Button) view.findViewById(R.id.button_advanced_model);
+        classicalMovie = (Button) view.findViewById(R.id.button_classic_movie);
         partyRules.setOnClickListener(this);
         seriesSpeech.setOnClickListener(this);
         qualifiedMembers.setOnClickListener(this);
@@ -88,17 +95,30 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
     }
 
     private void setRollPagerView() {
-        mRollPagerView= (RollPagerView) view.findViewById(R.id.Carousel_figure);
-        mRollPagerView.setAdapter(new HomePagePictureAdapter(HomePageFragment.this,carouselFigures));
+        if (mRollPagerView == null) {//初始化，从SharedPreference读取地址，从磁盘读取缓存
+            mRollPagerView = (RollPagerView) view.findViewById(R.id.Carousel_figure);
+            Set<String> tmp = SFUtil.getInstance().getUrls();
+            if (tmp != null) {
+                for (String s : tmp) {
+                    carouselFigures.add(new PhotoBean.DataBean(s));
+                    Log.d(TAG, s);
+                }
+            }
+            homePagePictureAdapter = new HomePagePictureAdapter(HomePageFragment.this, carouselFigures);
+            mRollPagerView.setAdapter(homePagePictureAdapter);
+        }
+        homePagePictureAdapter.notifyDataSetChanged();
     }
 
     public void getPhotos() {
+        carouselFigures.clear();
+        homePagePictureAdapter.notifyDataSetChanged();
         Subscriber<PhotoBean.DataBean> subscriber = new Subscriber<PhotoBean.DataBean>() {
             @Override
             public void onError(Throwable e) {
                 //发生了错误的回调
                 Toast.makeText(getContext(), "出错啦/(ㄒoㄒ)/~~", Toast.LENGTH_SHORT).show();
-                Log.d(TAG, "onError: "+e.getMessage());
+                Log.d(TAG, "onError: " + e.getMessage());
             }
 
             @Override
@@ -106,9 +126,8 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
                 //这里可以获取到我们想要的实体类
                 //在Activity里new一个list，把dataBean扔进去就行了
                 //举个例子:
-
                 carouselFigures.add(dataBean);
-                Log.d(TAG, "onNext: "+carouselFigures.get(0).getImgurl());
+                Log.d(TAG, "onNext: " + carouselFigures.get(0).getImgurl());
             }
 
             @Override
@@ -116,7 +135,11 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
                 //请求完成，换句话说，所有的newslistBean都仍到list里面去了
                 //然后就可以执行把arrayList给recyclerView的adapter之类的操作了
                 Log.d(TAG, "onCompleted: 请求完成啦！！！");
-
+                Set<String> urls = new HashSet<>();
+                for (PhotoBean.DataBean tmp : carouselFigures) {
+                    urls.add(tmp.getImgurl());
+                }
+                SFUtil.getInstance().saveUrls(urls);
                 setRollPagerView();//启动轮播图
             }
         };
@@ -126,48 +149,48 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.button_party_rules_c:
-            case R.id.button_party_rules :
-                Intent intent = new Intent(getContext(), HomePageDtailActivity.class);
-                intent.putExtra("url","http://lxyz.12371.cn/dzdg/");
-                intent.putExtra("title","学党规党章");
+            case R.id.button_party_rules:
+                Intent intent = new Intent(getContext(), HomePageDtail.class);
+                intent.putExtra("url", "http://lxyz.12371.cn/dzdg/");
+                intent.putExtra("title", "学党规党章");
                 startActivity(intent);
 
                 break;
             case R.id.button_series_speech_c:
             case R.id.button_series_speech:
-                Intent intent1 = new Intent(getContext(), HomePageDtailActivity.class);
-                intent1.putExtra("url","http://www.12371.cn/special/xjpzyls/xxxjpzyls/");
-                intent1.putExtra("title","学系列讲话");
+                Intent intent1 = new Intent(getContext(), HomePageDtail.class);
+                intent1.putExtra("url", "http://www.12371.cn/special/xjpzyls/xxxjpzyls/");
+                intent1.putExtra("title", "学系列讲话");
                 startActivity(intent1);
                 break;
             case R.id.button_qualified_members_c:
             case R.id.button_qualified_members:
-                Intent intent2 = new Intent(getContext(), HomePageDtailActivity.class);
-                intent2.putExtra("url","http://lxyz.12371.cn/xjdx/");
-                intent2.putExtra("title","做合格党员");
+                Intent intent2 = new Intent(getContext(), HomePageDtail.class);
+                intent2.putExtra("url", "http://lxyz.12371.cn/xjdx/");
+                intent2.putExtra("title", "做合格党员");
                 startActivity(intent2);
                 break;
             case R.id.button_internet_activity_c:
             case R.id.button_internet_activity:
-                Intent intent3 = new Intent(getContext(), HomePageDtailActivity.class);
-                intent3.putExtra("url","https://redrock.cqupt.edu.cn/lxyz_activity/");
-                intent3.putExtra("title","网络活动");
+                Intent intent3 = new Intent(getContext(), HomePageDtail.class);
+                intent3.putExtra("url", "https://redrock.cqupt.edu.cn/lxyz_activity/");
+                intent3.putExtra("title", "网络活动");
                 startActivity(intent3);
                 break;
             case R.id.button_advanced_model_c:
             case R.id.button_advanced_model:
-                Intent intent4 = new Intent(getContext(), HomePageDtailActivity.class);
-                intent4.putExtra("url","http://lxyz.12371.cn/xjdx/");
-                intent4.putExtra("title","先进典型");
+                Intent intent4 = new Intent(getContext(), HomePageDtail.class);
+                intent4.putExtra("url", "http://lxyz.12371.cn/xjdx/");
+                intent4.putExtra("title", "先进典型");
                 startActivity(intent4);
                 break;
             case R.id.button_classic_movie_c:
             case R.id.button_classic_movie:
-                Intent intent5 = new Intent(getContext(), HomePageDtailActivity.class);
-                intent5.putExtra("url","http://lxyz.12371.cn/jdyx/");
-                intent5.putExtra("title","经典影像");
+                Intent intent5 = new Intent(getContext(), HomePageDtail.class);
+                intent5.putExtra("url", "http://lxyz.12371.cn/jdyx/");
+                intent5.putExtra("title", "经典影像");
                 startActivity(intent5);
                 break;
             default:

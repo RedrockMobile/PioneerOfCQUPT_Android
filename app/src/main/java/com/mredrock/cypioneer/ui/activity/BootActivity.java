@@ -35,6 +35,6 @@ public class BootActivity extends Activity {
                 }
                 BootActivity.this.finish();
             }
-        }, 3000);
+        }, 1500);
     }
 }

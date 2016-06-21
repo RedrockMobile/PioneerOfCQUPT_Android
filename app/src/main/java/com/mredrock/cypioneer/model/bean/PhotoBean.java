@@ -53,6 +53,10 @@ public class PhotoBean {
         private String link;
         private String imgurl;
 
+        public DataBean(String imgurl) {
+            this.imgurl = imgurl;
+        }
+
         public String getTitle() {
             return title;
         }
