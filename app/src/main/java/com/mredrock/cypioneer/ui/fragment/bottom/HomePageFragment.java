@@ -4,12 +4,10 @@ package com.mredrock.cypioneer.ui.fragment.bottom;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.jude.rollviewpager.RollPagerView;
@@ -33,65 +31,43 @@ import rx.Subscriber;
 public class HomePageFragment extends Fragment implements View.OnClickListener {
     public static final String TAG = "HomePageFragment";
     private ArrayList<PhotoBean.DataBean> carouselFigures;//轮播图实体类数组
+    private boolean cleared;
 
-    //朱大的库太方便了
     RollPagerView mRollPagerView;
     HomePagePictureAdapter homePagePictureAdapter;
     View view;
-    CardView partyRules_c;
-    CardView seriesSpeech_c;
-    CardView qualifiedMembers_c;
-    CardView internetActvitis_c;
-    CardView advancedModel_c;
-    CardView classicalMovie_c;
-    Button partyRules;
-    Button seriesSpeech;
-    Button qualifiedMembers;
-    Button internetActvitis;
-    Button advancedModel;
-    Button classicalMovie;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home_page, container, false);
+        Log.d(TAG, "onCreateView");
         return view;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        carouselFigures = new ArrayList<>();
+        if (carouselFigures == null) {
+            carouselFigures = new ArrayList<>();
+        }
         setRollPagerView();
         initView();
         getPhotos();
+        Log.d(TAG, "onViewCreated");
     }
 
-    private void initView() {
-        partyRules_c = (CardView) view.findViewById(R.id.button_party_rules_c);
-        seriesSpeech_c = (CardView) view.findViewById(R.id.button_series_speech_c);
-        qualifiedMembers_c = (CardView) view.findViewById(R.id.button_qualified_members_c);
-        internetActvitis_c = (CardView) view.findViewById(R.id.button_internet_activity_c);
-        advancedModel_c = (CardView) view.findViewById(R.id.button_advanced_model_c);
-        classicalMovie_c = (CardView) view.findViewById(R.id.button_classic_movie_c);
-        partyRules_c.setOnClickListener(this);
-        seriesSpeech_c.setOnClickListener(this);
-        qualifiedMembers_c.setOnClickListener(this);
-        internetActvitis_c.setOnClickListener(this);
-        advancedModel_c.setOnClickListener(this);
-        classicalMovie_c.setOnClickListener(this);
-
-        partyRules = (Button) view.findViewById(R.id.button_party_rules);
-        seriesSpeech = (Button) view.findViewById(R.id.button_series_speech);
-        qualifiedMembers = (Button) view.findViewById(R.id.button_qualified_members);
-        internetActvitis = (Button) view.findViewById(R.id.button_internet_activity);
-        advancedModel = (Button) view.findViewById(R.id.button_advanced_model);
-        classicalMovie = (Button) view.findViewById(R.id.button_classic_movie);
-        partyRules.setOnClickListener(this);
-        seriesSpeech.setOnClickListener(this);
-        qualifiedMembers.setOnClickListener(this);
-        internetActvitis.setOnClickListener(this);
-        advancedModel.setOnClickListener(this);
-        classicalMovie.setOnClickListener(this);
-
+    private void initView() {//不需要成员变量来持有他们的引用，只关心他们的OnClick事件
+        view.findViewById(R.id.button_party_rules_c).setOnClickListener(this);
+        view.findViewById(R.id.button_series_speech_c).setOnClickListener(this);
+        view.findViewById(R.id.button_qualified_members_c).setOnClickListener(this);
+        view.findViewById(R.id.button_internet_activity_c).setOnClickListener(this);
+        view.findViewById(R.id.button_advanced_model_c).setOnClickListener(this);
+        view.findViewById(R.id.button_classic_movie_c).setOnClickListener(this);
+        view.findViewById(R.id.button_party_rules).setOnClickListener(this);
+        view.findViewById(R.id.button_series_speech).setOnClickListener(this);
+        view.findViewById(R.id.button_qualified_members).setOnClickListener(this);
+        view.findViewById(R.id.button_internet_activity).setOnClickListener(this);
+        view.findViewById(R.id.button_advanced_model).setOnClickListener(this);
+        view.findViewById(R.id.button_classic_movie).setOnClickListener(this);
     }
 
     private void setRollPagerView() {
@@ -101,7 +77,7 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
             if (tmp != null) {
                 for (String s : tmp) {
                     carouselFigures.add(new PhotoBean.DataBean(s));
-                    Log.d(TAG, s);
+                    Log.d(TAG, "从SharedPreference读取地址--->" + s);
                 }
             }
             homePagePictureAdapter = new HomePagePictureAdapter(HomePageFragment.this, carouselFigures);
@@ -111,7 +87,6 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
     }
 
     public void getPhotos() {
-        carouselFigures.clear();
         homePagePictureAdapter.notifyDataSetChanged();
         Subscriber<PhotoBean.DataBean> subscriber = new Subscriber<PhotoBean.DataBean>() {
             @Override
@@ -123,6 +98,10 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
 
             @Override
             public void onNext(PhotoBean.DataBean dataBean) {
+                if (!cleared) {
+                    carouselFigures.clear();
+                    cleared = true;
+                }
                 //这里可以获取到我们想要的实体类
                 //在Activity里new一个list，把dataBean扔进去就行了
                 //举个例子:
@@ -195,8 +174,6 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
                 break;
             default:
                 break;
-
-
         }
     }
 }

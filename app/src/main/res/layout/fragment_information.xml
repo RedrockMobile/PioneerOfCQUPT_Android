@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tabLayout"
@@ -13,15 +13,10 @@
         app:tabIndicatorHeight="2dp"
         app:tabSelectedTextColor="#eb4f38"
         app:tabTextAppearance="@style/App_Theme"
-        app:tabTextColor="#666666"
-        >
-    </android.support.design.widget.TabLayout>
+        app:tabTextColor="#666666"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/tabLayout"
-        >
-    </android.support.v4.view.ViewPager>
+        android:layout_height="match_parent" />
 </LinearLayout>
