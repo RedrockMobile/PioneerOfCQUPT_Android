@@ -23,7 +23,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity--->";
-    private List<Fragment> fragments = fragments = new ArrayList<>();
+    private List<Fragment> fragments = new ArrayList<>();
     FragmentManager fragmentManager;
     RadioGroup radioGroup;
 
@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
+
         /**
          * ----------------------BottomBar部分----------------------------------*/
         fragmentManager = getSupportFragmentManager();
@@ -83,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
                         transaction5.replace(R.id.content, fragments.get(3));
                         transaction5.commit();
                         break;
-
                 }
             }
         });
