@@ -17,6 +17,7 @@ import com.mredrock.cypioneer.ui.fragment.bottom.PersonalCenterFragment;
 import com.mredrock.cypioneer.ui.fragment.bottom.StudyDiscussionFragment;
 import com.mredrock.cypioneer.ui.fragment.pager.InfoPageFragment;
 import com.mredrock.cypioneer.utils.DelayClose;
+import com.mredrock.cypioneer.utils.PinkUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -95,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (BuildConfig.DEBUG) {
-            Log.d(TAG, "onBackPressed");
+            PinkUtils.LogD(TAG, "onBackPressed");
         }
         DelayClose.onBackPressed();
     }

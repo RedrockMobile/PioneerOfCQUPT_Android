@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -24,6 +23,7 @@ import com.mredrock.cypioneer.R;
 import com.mredrock.cypioneer.presenter.LoginPresenter;
 import com.mredrock.cypioneer.ui.view.LoginView;
 import com.mredrock.cypioneer.utils.DelayClose;
+import com.mredrock.cypioneer.utils.PinkUtils;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
     private static final String TAG = "LoginActivity--->";
@@ -151,7 +151,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void LoginFail(int failCode, Throwable throwable) {
-        Log.d(TAG, "LoginFail--->");
+        PinkUtils.LogD(TAG, "LoginFail--->");
         throwable.printStackTrace();
         mPasswordView.setError(getString(R.string.login_fail));
     }

@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.mredrock.cypioneer.R;
 
-public class HomePageDtailActivity extends AppCompatActivity {
+public class HomePageDetailActivity extends AppCompatActivity {
     TextView tv;
     TextView sub_tv;
     WebView webView;

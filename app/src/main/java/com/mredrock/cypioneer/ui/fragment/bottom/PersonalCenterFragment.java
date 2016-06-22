@@ -30,7 +30,6 @@ import rx.functions.Action1;
  * Settings.
  */
 public class PersonalCenterFragment extends Fragment implements View.OnClickListener {
-    private View view;
     private TextView cacheSize;
     private TextView usernameTextView;
 

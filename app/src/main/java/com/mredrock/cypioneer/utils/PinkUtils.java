@@ -5,6 +5,9 @@ import android.content.res.AssetManager;
 import android.graphics.Movie;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Log;
+
+import com.mredrock.cypioneer.BuildConfig;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -186,6 +189,12 @@ public class PinkUtils {
     public static String getFileType(String path) {
         String str[] = path.split("\\.");
         return str[str.length - 1];
+    }
+
+    public static void LogD(String TAG, String content) {
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, content);
+        }
     }
 
     public static byte[] getTargetGifByte(Context context, String name) throws IOException {
