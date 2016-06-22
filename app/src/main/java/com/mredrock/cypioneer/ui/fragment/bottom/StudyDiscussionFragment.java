@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.mredrock.cypioneer.R;
 import com.mredrock.cypioneer.model.bean.NewsListBean;
 import com.mredrock.cypioneer.net.HttpMethods;
+import com.mredrock.cypioneer.utils.PinkUtils;
 
 import java.util.ArrayList;
 
@@ -56,9 +57,9 @@ public class StudyDiscussionFragment extends Fragment {
             public void onCompleted() {
                 //请求完成，换句话说，所有的newslistBean都仍到list里面去了
                 //然后就可以执行把arrayList给recyclerView的adapter之类的操作了
-                Log.d(TAG, "onCompleted: 请求完成啦！！！");
+                PinkUtils.LogD(TAG, "onCompleted: 请求完成啦！！！");
                 for (int i = 0; i < mDataBeen.size(); i++) {
-                    Log.d(TAG, "onCompleted: " + mDataBeen.get(i).getContent());
+                    PinkUtils.LogD(TAG, "onCompleted: " + mDataBeen.get(i).getContent());
                 }
             }
         };

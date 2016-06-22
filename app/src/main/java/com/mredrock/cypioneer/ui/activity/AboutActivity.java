@@ -5,14 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.jude.swipbackhelper.SwipeBackHelper;
-import com.mredrock.cypioneer.BuildConfig;
 import com.mredrock.cypioneer.R;
 import com.mredrock.cypioneer.cfg.Config;
 import com.mredrock.cypioneer.utils.PinkUtils;
@@ -58,9 +56,7 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.play_up:
-                if (BuildConfig.DEBUG) {
-                    Log.d(TAG, "onClick: up");
-                }
+                PinkUtils.LogD(TAG, "onClick: up");
                 if (stack.isEmpty()) {
                     stack.push(Config.PLAY.up);
                 } else if (stack.peek() != Config.PLAY.up) {
@@ -70,9 +66,7 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
                 }
                 break;
             case R.id.play_down:
-                if (BuildConfig.DEBUG) {
-                    Log.d(TAG, "onClick: down");
-                }
+                PinkUtils.LogD(TAG, "onClick: down");
                 if (!stack.isEmpty() && stack.peek() != Config.PLAY.down && stack.peek() != Config.PLAY.up) {
                     stack.clear();
                 } else {
@@ -80,9 +74,7 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
                 }
                 break;
             case R.id.play_left:
-                if (BuildConfig.DEBUG) {
-                    Log.d(TAG, "onClick: left");
-                }
+                PinkUtils.LogD(TAG, "onClick: left");
                 if (!stack.isEmpty() && stack.peek() != Config.PLAY.down && stack.peek() != Config.PLAY.right) {
                     stack.clear();
                 } else {
@@ -90,9 +82,7 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
                 }
                 break;
             case R.id.play_right:
-                if (BuildConfig.DEBUG) {
-                    Log.d(TAG, "onClick: right");
-                }
+                PinkUtils.LogD(TAG, "onClick: right");
                 if (!stack.isEmpty() && stack.peek() != Config.PLAY.left) {
                     stack.clear();
                 } else {
@@ -100,9 +90,7 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
                 }
                 break;
             case R.id.play_a:
-                if (BuildConfig.DEBUG) {
-                    Log.d(TAG, "onClick: a");
-                }
+                PinkUtils.LogD(TAG, "onClick: a");
                 if (!stack.isEmpty() && stack.peek() != Config.PLAY.b) {
                     stack.clear();
                 } else {
@@ -126,9 +114,7 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
                 }
                 break;
             case R.id.play_b:
-                if (BuildConfig.DEBUG) {
-                    Log.d(TAG, "onClick: b");
-                }
+                PinkUtils.LogD(TAG, "onClick: b");
                 if (!stack.isEmpty() && stack.peek() != Config.PLAY.right && stack.peek() != Config.PLAY.a) {
                     stack.clear();
                 } else {

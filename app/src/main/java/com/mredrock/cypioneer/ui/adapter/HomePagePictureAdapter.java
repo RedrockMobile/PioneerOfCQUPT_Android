@@ -2,7 +2,6 @@ package com.mredrock.cypioneer.ui.adapter;
 
 import android.content.Intent;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -10,7 +9,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 import com.mredrock.cypioneer.model.bean.PhotoBean;
-import com.mredrock.cypioneer.ui.activity.HomePageDtailActivity;
+import com.mredrock.cypioneer.ui.activity.HomePageDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +45,7 @@ public class HomePagePictureAdapter extends StaticPagerAdapter {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(fragment.getContext(), HomePageDtailActivity.class);
+                    Intent intent = new Intent(fragment.getContext(), HomePageDetailActivity.class);
                     intent.putExtra("title", carouselFigures.get(position).getTitle());
                     intent.putExtra("url", carouselFigures.get(position).getLink());
                     fragment.getActivity().startActivity(intent);

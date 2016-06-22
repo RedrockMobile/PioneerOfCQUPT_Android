@@ -38,7 +38,7 @@
             android:name="com.mredrock.cypioneer.utils.MyGlideModule"
             android:value="GlideModule" />
 
-        <activity android:name=".ui.activity.HomePageDtailActivity" />
+        <activity android:name=".ui.activity.HomePageDetailActivity" />
         <activity android:name=".ui.activity.NewsDetailActivity"></activity>
     </application>
 

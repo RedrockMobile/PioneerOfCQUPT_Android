@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.HomePageDtailActivity">
+    tools:context=".ui.activity.HomePageDetailActivity">
 
     <include
-        android:id="@+id/toolbar_include"
+        android:id="@+id/homepage_toolbar_include"
         layout="@layout/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -16,7 +16,7 @@
         android:id="@+id/web_view_homepage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar_include" />
+        android:layout_below="@+id/homepage_toolbar_include" />
     <!--<ProgressBar-->
     <!--style="?android:attr/progressBarStyleHorizontal"-->
     <!--android:id="@+id/myProgressBar"-->

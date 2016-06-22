@@ -25,7 +25,7 @@ import rx.Subscriber;
  * Created by xushuzhan on 2016/6/15.
  */
 public class InfoPageFragment extends Fragment {
-    public static final String TAG = "InfoPageFragment";
+    private static final String TAG = "InfoPageFragment";
     private static final String PAGER_ID = "position";
     private View mView;
 

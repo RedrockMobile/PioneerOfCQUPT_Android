@@ -19,13 +19,13 @@ public class DelayClose {
 
     public static void attachActivity(Activity activity) {
         activities.push(activity);
-        Log.d(TAG, activity.toString().split("@")[0] + " attached");
+        PinkUtils.LogD(TAG, activity.toString().split("@")[0] + " attached");
     }
 
     public static void detachActivity(Activity activity) {
         if (activities.contains(activity)) {
             activities.remove(activity);
-            Log.d(TAG, activity.toString().split("@")[0] + " detached");
+            PinkUtils.LogD(TAG, activity.toString().split("@")[0] + " detached");
         }
     }
 
@@ -47,7 +47,7 @@ public class DelayClose {
         for (Activity tmp : activities) {
             if (!activity.equals(tmp)) {
                 activities.remove(tmp);
-                Log.d(TAG, tmp.toString().split("@")[0] + " removed");
+                PinkUtils.LogD(TAG, tmp.toString().split("@")[0] + " removed");
                 tmp.finish();
             }
         }

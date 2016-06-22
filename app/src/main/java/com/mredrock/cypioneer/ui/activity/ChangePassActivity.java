@@ -22,6 +22,7 @@ import com.jude.swipbackhelper.SwipeBackHelper;
 import com.mredrock.cypioneer.R;
 import com.mredrock.cypioneer.presenter.ChangePasswordPresenter;
 import com.mredrock.cypioneer.ui.view.ChangePasswordView;
+import com.mredrock.cypioneer.utils.PinkUtils;
 
 
 public class ChangePassActivity extends AppCompatActivity implements ChangePasswordView {
@@ -140,7 +141,7 @@ public class ChangePassActivity extends AppCompatActivity implements ChangePassw
 
     @Override
     public void ChangePasswordFail(int failCode, Throwable throwable) {
-        Log.d(TAG, "login--->" + throwable.toString());
+        PinkUtils.LogD(TAG, "login--->" + throwable.toString());
         throwable.printStackTrace();
         newPasswordView.setError(getString(R.string.login_fail));
     }
