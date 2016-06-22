@@ -4,6 +4,7 @@ package com.mredrock.cypioneer.ui.fragment.bottom;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.util.SortedList;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,7 @@ import com.mredrock.cypioneer.utils.SFUtil;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 import rx.Subscriber;
 
@@ -32,13 +34,16 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
     public static final String TAG = "HomePageFragment";
     private ArrayList<PhotoBean.DataBean> carouselFigures;//轮播图实体类数组
     private boolean cleared;
+    private boolean initialized;
 
     RollPagerView mRollPagerView;
     HomePagePictureAdapter homePagePictureAdapter;
     View view;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_home_page, container, false);
+        if (view == null) {
+            view = inflater.inflate(R.layout.fragment_home_page, container, false);
+        }
         Log.d(TAG, "onCreateView");
         return view;
     }
@@ -56,6 +61,9 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initView() {//不需要成员变量来持有他们的引用，只关心他们的OnClick事件
+        if (initialized) {
+            return;
+        }
         view.findViewById(R.id.button_party_rules_c).setOnClickListener(this);
         view.findViewById(R.id.button_series_speech_c).setOnClickListener(this);
         view.findViewById(R.id.button_qualified_members_c).setOnClickListener(this);
@@ -71,8 +79,10 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
     }
 
     private void setRollPagerView() {
-        if (mRollPagerView == null) {//初始化，从SharedPreference读取地址，从磁盘读取缓存
-            mRollPagerView = (RollPagerView) view.findViewById(R.id.Carousel_figure);
+        if (initialized) {
+            return;
+        }
+        if (carouselFigures.isEmpty()) {//初始化，从SharedPreference读取地址，从磁盘读取缓存
             Set<String> tmp = SFUtil.getInstance().getUrls();
             if (tmp != null) {
                 for (String s : tmp) {
@@ -81,13 +91,17 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
                 }
             }
             homePagePictureAdapter = new HomePagePictureAdapter(HomePageFragment.this, carouselFigures);
+            mRollPagerView = (RollPagerView) view.findViewById(R.id.Carousel_figure);
             mRollPagerView.setAdapter(homePagePictureAdapter);
         }
+        cleared = false;
         homePagePictureAdapter.notifyDataSetChanged();
     }
 
     public void getPhotos() {
-        homePagePictureAdapter.notifyDataSetChanged();
+        if (initialized) {
+            return;
+        }
         Subscriber<PhotoBean.DataBean> subscriber = new Subscriber<PhotoBean.DataBean>() {
             @Override
             public void onError(Throwable e) {
@@ -114,16 +128,19 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
                 //请求完成，换句话说，所有的newslistBean都仍到list里面去了
                 //然后就可以执行把arrayList给recyclerView的adapter之类的操作了
                 Log.d(TAG, "onCompleted: 请求完成啦！！！");
+                carouselFigures.add(new PhotoBean.DataBean("http://hongyan.cqupt.edu.cn/images/index_top.jpg", "http://hongyan.cqupt.edu.cn/", "RedRock"));
                 Set<String> urls = new HashSet<>();
                 for (PhotoBean.DataBean tmp : carouselFigures) {
+                    Log.d(TAG, "SFUtil:saveUrls-->" + tmp.getImgurl());
                     urls.add(tmp.getImgurl());
                 }
                 SFUtil.getInstance().saveUrls(urls);
                 setRollPagerView();//启动轮播图
+                initialized = true;
             }
         };
-
         HttpMethods.getInstance().getPhotos(subscriber);
+
     }
 
     @Override
@@ -176,4 +193,5 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
                 break;
         }
     }
+
 }
