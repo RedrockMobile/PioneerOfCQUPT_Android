@@ -94,6 +94,7 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
         }
         cleared = false;
         homePagePictureAdapter.notifyDataSetChanged();
+        mRollPagerView.setAdapter(homePagePictureAdapter);
     }
 
     public void getPhotos() {

@@ -1,10 +1,8 @@
 package com.mredrock.cypioneer.ui.activity;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
@@ -17,10 +15,11 @@ public class HomePageDetailActivity extends AppCompatActivity {
     WebView webView;
     String mUrl;
     String mTitle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_page_dtail);
+        setContentView(R.layout.activity_home_page_detail);
 
         //获取URL和title
         Intent intent = getIntent();
@@ -30,7 +29,7 @@ public class HomePageDetailActivity extends AppCompatActivity {
         tv.setText(mTitle);
         tv.setTextSize(18);
 
-        sub_tv= (TextView) findViewById(R.id.tv_sub_title_toolbar);
+        sub_tv = (TextView) findViewById(R.id.tv_sub_title_toolbar);
         sub_tv.setText("");
 
         webView = (WebView) findViewById(R.id.web_view_homepage);
