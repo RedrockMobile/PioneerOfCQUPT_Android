@@ -5,7 +5,7 @@ This project is for [http://202.202.43.42/lxyz/](http://202.202.43.42/lxyz/)
 License
 -------
 
-    Copyright 2015 ExcitingBoat
+    Copyright 2016 ExcitingBoat
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
