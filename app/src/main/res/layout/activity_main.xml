@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.mredrock.cypioneer.ui.activity.MainActivity">
+    tools:context="com.mredrock.cypioneer.ui.activity.MainActivity"
+    android:background="@color/background">
 
     <include
         android:id="@+id/include2"
@@ -26,4 +27,10 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/include"
         android:layout_below="@+id/include2" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:layout_above="@id/include"
+        android:background="@color/black_overlay"
+        />
 </RelativeLayout>
