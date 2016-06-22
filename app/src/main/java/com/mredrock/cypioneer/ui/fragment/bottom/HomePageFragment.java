@@ -2,6 +2,7 @@ package com.mredrock.cypioneer.ui.fragment.bottom;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -74,6 +75,35 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
         view.findViewById(R.id.button_internet_activity).setOnClickListener(this);
         view.findViewById(R.id.button_advanced_model).setOnClickListener(this);
         view.findViewById(R.id.button_classic_movie).setOnClickListener(this);
+        view.findViewById(R.id.button_1)
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                        intent.setData(Uri.parse("http://lxyz.12371.cn/"));
+                        startActivity(intent);
+                    }
+                });
+        view.findViewById(R.id.button_2)
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                        intent.setData(Uri.parse("http://www.12371.gov.cn/Category_1130/Index.aspx"));
+                        startActivity(intent);
+                    }
+                });
+
+        view.findViewById(R.id.button_3)
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                        intent.setData(Uri.parse("http://www.cqedu.cn/Category_308/Index.aspx"));
+                        startActivity(intent);
+                    }
+                });
+
     }
 
     private void setRollPagerView() {
