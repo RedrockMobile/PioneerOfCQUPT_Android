@@ -2,13 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <RadioGroup
-        android:layout_alignParentBottom="true"
-        android:id="@+id/rg_tab"
+    <RadioGroup android:id="@+id/rg_tab"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#ffff"
+        android:background="@color/background"
         xmlns:android="http://schemas.android.com/apk/res/android">
 
         <RadioButton
