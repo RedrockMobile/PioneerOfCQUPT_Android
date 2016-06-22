@@ -10,10 +10,15 @@ import android.widget.Toast;
 
 import com.mredrock.cypioneer.R;
 import com.mredrock.cypioneer.cfg.Config;
+import com.mredrock.cypioneer.model.bean.PhotoBean;
 import com.mredrock.cypioneer.model.bean.UserBean;
 import com.mredrock.cypioneer.utils.SFUtil;
 
+import java.util.ArrayList;
+
 public class BootActivity extends Activity {
+    public static final String TAG = "BootActivity123";
+    private ArrayList<PhotoBean.DataBean> carouselFigures;//
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +27,8 @@ public class BootActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager
                 .LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_boot);
+
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -37,4 +44,5 @@ public class BootActivity extends Activity {
             }
         }, 1500);
     }
+
 }
