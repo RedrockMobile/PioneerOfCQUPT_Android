@@ -96,11 +96,11 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
                 } else {
                     stack.push(Config.PLAY.a);
                     if (stack.equals(Config.PLAY.getTargetStack())) {
-                        Snackbar.make(v, "test", Snackbar.LENGTH_SHORT).show();
+                        Snackbar.make(v, "你发现了一个彩蛋", Snackbar.LENGTH_SHORT).show();
                         try {
                             if (dialog == null) {
                                 dialog = new Dialog(this);
-                                dialog.setTitle("???");
+                                dialog.setTitle("BiliBili");
                                 ImageView gifView = new ImageView(this);
                                 Glide.with(this).load(PinkUtils.getTargetGifByte(this, "play.gif")).into(gifView);
                                 gifView.setImageResource(R.color.none);

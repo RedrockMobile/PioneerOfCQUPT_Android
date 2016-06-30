@@ -71,7 +71,6 @@ public class PinkUtils {
      * @param inputStream inputStream
      * @return String content
      */
-
     public static String stringFromStream(InputStream inputStream) {
         Reader reader = new InputStreamReader(inputStream);
         BufferedReader bufferedReader = new BufferedReader(reader);
@@ -127,42 +126,58 @@ public class PinkUtils {
         }
     }
 
-    public static int getInt(JSONObject tmp, String name) {
+    /**
+     * @param jsonObject JSONObject
+     * @param name       name for int value from JSONObject
+     * @return int value from JSONObject,0 when an error occur
+     */
+    public static int getInt(JSONObject jsonObject, String name) {
+        return getInt(jsonObject, name, 0);
+    }
+
+    /**
+     * @param jsonObject JSONObject
+     * @param name       name for String value from JSONObject
+     * @return String value from JSONObject,null when an error occur
+     */
+    public static String getString(JSONObject jsonObject, String name) {
+        return getString(jsonObject, name, null);
+    }
+
+    /**
+     * @param jsonObject    JSONObject
+     * @param name          name for int value from JSONObject
+     * @param defaultResult defaultResult
+     * @return int value from JSONObject,defaultResult when an error occur
+     */
+    public static int getInt(JSONObject jsonObject, String name, int defaultResult) {
         try {
-            return tmp.getInt(name);
+            return jsonObject.getInt(name);
         } catch (JSONException e) {
             e.printStackTrace();
-            return 0;
+            return defaultResult;
         }
     }
 
-    public static String getString(JSONObject tmp, String name) {
+    /**
+     * @param jsonObject    JSONObject
+     * @param name          name for String value from JSONObject
+     * @param defaultResult defaultResult
+     * @return String value from JSONObject,defaultResult when an error occur
+     */
+    public static String getString(JSONObject jsonObject, String name, String defaultResult) {
         try {
-            return tmp.getString(name);
+            return jsonObject.getString(name);
         } catch (JSONException e) {
             e.printStackTrace();
-            return null;
+            return defaultResult;
         }
     }
 
-    public static int getInt(JSONObject tmp, String name, int def) {
-        try {
-            return tmp.getInt(name);
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return def;
-        }
-    }
-
-    public static String getString(JSONObject tmp, String name, String def) {
-        try {
-            return tmp.getString(name);
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return def;
-        }
-    }
-
+    /**
+     * @param context context to get ConnectivityManager
+     * @return NetworkType {@value NETTYPE_CMNET,NETTYPE_CMWAP,NETTYPE_ERROR,NETTYPE_WIFI}
+     */
     public static int getNetworkType(Context context) {
         int netType = 0;
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -186,17 +201,31 @@ public class PinkUtils {
         return netType;
     }
 
+    /**
+     * @param path file path
+     * @return file type
+     */
     public static String getFileType(String path) {
         String str[] = path.split("\\.");
         return str[str.length - 1];
     }
 
+    /**
+     * @param TAG     DEBUG TAH
+     * @param content DEBUG content
+     */
     public static void LogD(String TAG, String content) {
         if (BuildConfig.DEBUG) {
             Log.d(TAG, content);
         }
     }
 
+    /**
+     * @param context context to get AssetManager
+     * @param name    Asset file name
+     * @return ByteArray for Asset file
+     * @throws IOException
+     */
     public static byte[] getTargetGifByte(Context context, String name) throws IOException {
         byte[] buffer = new byte[1024];
         InputStream inputStream = getTargetGifInputStream(context, name);
@@ -208,6 +237,12 @@ public class PinkUtils {
         return byteArrayOutputStream.toByteArray();
     }
 
+    /**
+     * @param context context to get AssetManager
+     * @param name    Asset file name
+     * @return Movie for gif file
+     * @throws IOException
+     */
     public static Movie getTargetGifMovie(Context context, String name) throws IOException {
         InputStream inputStream = getTargetGifInputStream(context, name);
         Movie movie = Movie.decodeStream(inputStream);
@@ -215,6 +250,12 @@ public class PinkUtils {
         return movie;
     }
 
+    /**
+     * @param context context to get AssetManager
+     * @param name    Asset file name
+     * @return InputStream
+     * @throws IOException
+     */
     public static InputStream getTargetGifInputStream(Context context, String name) throws IOException {
         AssetManager assetManager = context.getAssets();
         return assetManager.open(name);
