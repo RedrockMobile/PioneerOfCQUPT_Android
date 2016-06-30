@@ -75,16 +75,18 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
         view.findViewById(R.id.button_internet_activity).setOnClickListener(this);
         view.findViewById(R.id.button_advanced_model).setOnClickListener(this);
         view.findViewById(R.id.button_classic_movie).setOnClickListener(this);
-        view.findViewById(R.id.button_1)
+        view.findViewById(R.id.tv1)
                 .setOnClickListener(new View.OnClickListener() {
+
                     @Override
                     public void onClick(View v) {
+
                         Intent intent = new Intent(Intent.ACTION_VIEW);
                         intent.setData(Uri.parse("http://lxyz.12371.cn/"));
                         startActivity(intent);
                     }
                 });
-        view.findViewById(R.id.button_2)
+        view.findViewById(R.id.tv2)
                 .setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -94,7 +96,7 @@ public class HomePageFragment extends Fragment implements View.OnClickListener {
                     }
                 });
 
-        view.findViewById(R.id.button_3)
+        view.findViewById(R.id.tv3)
                 .setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
