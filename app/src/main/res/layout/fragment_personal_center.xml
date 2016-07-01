@@ -2,17 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-    android:layout_marginStart="@dimen/activity_horizontal_margin"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/person_username"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        android:paddingStart="@dimen/activity_horizontal_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:background="@drawable/default_selector"
+        android:clickable="true"
         android:gravity="center_vertical"
         android:text="@string/click_to_login"
         android:textSize="20sp" />
+
+    <include
+        layout="@layout/boarder"
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -22,6 +30,9 @@
             android:id="@+id/person_clear_cache"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/default_height"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:background="@drawable/default_selector"
             android:gravity="center_vertical"
             android:text="@string/clear_cache"
             android:textSize="20sp" />
@@ -50,34 +61,66 @@
 
     </RelativeLayout>
 
+    <include
+        layout="@layout/boarder"
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp" />
+
     <TextView
         android:id="@+id/person_change_password"
         android:layout_width="match_parent"
         android:layout_height="@dimen/default_height"
+        android:paddingStart="@dimen/activity_horizontal_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:background="@drawable/default_selector"
         android:gravity="center_vertical"
         android:text="@string/change_password"
         android:textSize="20sp" />
+
+    <include
+        layout="@layout/boarder"
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp" />
 
     <TextView
         android:id="@+id/person_evaluate"
         android:layout_width="match_parent"
         android:layout_height="@dimen/default_height"
+        android:paddingStart="@dimen/activity_horizontal_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:background="@drawable/default_selector"
         android:gravity="center_vertical"
         android:text="@string/evaluate"
         android:textSize="20sp" />
+
+    <include
+        layout="@layout/boarder"
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp" />
 
     <TextView
         android:id="@+id/person_about"
         android:layout_width="match_parent"
         android:layout_height="@dimen/default_height"
+        android:paddingStart="@dimen/activity_horizontal_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:background="@drawable/default_selector"
         android:gravity="center_vertical"
         android:text="@string/about"
         android:textSize="20sp" />
+
+    <include
+        layout="@layout/boarder"
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp" />
 
     <TextView
         android:id="@+id/person_exit_login"
         android:layout_width="match_parent"
         android:layout_height="@dimen/default_height"
+        android:paddingStart="@dimen/activity_horizontal_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:background="@drawable/default_selector"
         android:gravity="center_vertical"
         android:text="@string/exit_login"
         android:textSize="20sp" />

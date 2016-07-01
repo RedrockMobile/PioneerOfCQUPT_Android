@@ -27,10 +27,11 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/include"
         android:layout_below="@+id/include2" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.6dp"
+
+    <include
+        layout="@layout/boarder"
         android:layout_above="@id/include"
-        android:background="@color/black_overlay"
+        android:layout_height="0.6dp"
+        android:layout_width="match_parent"
         />
 </RelativeLayout>
