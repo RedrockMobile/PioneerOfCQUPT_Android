@@ -8,11 +8,22 @@
         android:id="@+id/toolbar_include_news"
         layout="@layout/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
+        android:layout_height="60dp" />
+    <TextView
+        android:id="@+id/tv_news_detail_title"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:text="我是标题"
+        android:textColor="#000"
+        android:layout_below="@+id/toolbar_include_news"
+        android:textSize="23sp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        />
     <WebView
         android:id="@+id/web_view_news_dtail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar_include"/>
+        android:layout_below="@+id/tv_news_detail_title"/>
+
 </RelativeLayout>
