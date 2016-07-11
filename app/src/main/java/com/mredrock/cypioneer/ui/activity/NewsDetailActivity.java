@@ -36,6 +36,7 @@ public class NewsDetailActivity extends AppCompatActivity {
     TextView tvToolbarDownload;
     TextView tvToolbarSubTitle;
     TextView tvNewsTitle;
+    TextView tvNewsTime;
     Button btBack;
     String newsId;
     String newsDtail;
@@ -43,6 +44,7 @@ public class NewsDetailActivity extends AppCompatActivity {
     WebView webView;
     String fileName;
     FileUtil fileUtil;
+
     final String fileDir = "/PoineerOfCQUPT/";
 
     @Override
@@ -60,6 +62,7 @@ public class NewsDetailActivity extends AppCompatActivity {
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void initView() {
+        tvNewsTime= (TextView) findViewById(R.id.tv_news_detail_time);
         tvNewsTitle = (TextView) findViewById(R.id.tv_news_detail_title);
         tvToolbarTitle = (TextView) findViewById(R.id.tv_title_toolbar);
         tvToolbarSubTitle = (TextView) findViewById(R.id.tv_sub_title_toolbar);
@@ -97,10 +100,10 @@ public class NewsDetailActivity extends AppCompatActivity {
             public void onNext(NewsDetailBean newsDetailBean) {
                 newsDtail = newsDetailBean.getData().getContent();
                 tvNewsTitle.setText(newsDetailBean.getData().getTitle());
-                webView.loadDataWithBaseURL(null, newsDetailBean.getData().getTime() + newsDtail, "text/html", "utf-8", null);
+                webView.loadDataWithBaseURL(null, newsDtail, "text/html", "utf-8", null);
                 webView.getSettings().setJavaScriptEnabled(true);
                 webView.setWebChromeClient(new WebChromeClient());
-
+                tvNewsTime.setText(newsDetailBean.getData().getTime());
                 url = newsDetailBean.getData().getFile().get(0).getAddress();
                 Log.d("1234567", "onNext: " + url);
                 if (newsDetailBean.getData().getFile().size() != 0) {
