@@ -68,4 +68,16 @@ public class InfoListAdapter extends RecyclerView.Adapter<InfoListAdapter.MyView
             time = (TextView) itemView.findViewById(R.id.item_info_time);
         }
     }
+    //添加数据：在最前面添加
+    public void addItem(ArrayList<NewsListBean.DataBean> newDatas) {
+        newDatas.addAll(newsListInfo);
+        newsListInfo.removeAll(newsListInfo);
+        newsListInfo.addAll(newDatas);
+        notifyDataSetChanged();
+    }
+    //添加数据：在最后添加
+    public void addMoreItem(ArrayList<NewsListBean.DataBean> newDatas) {
+        newsListInfo.addAll(newDatas);
+        notifyDataSetChanged();
+    }
 }

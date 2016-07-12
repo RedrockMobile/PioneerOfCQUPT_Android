@@ -4,12 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mredrock.cypioneer.R;
 import com.mredrock.cypioneer.model.bean.NewsListBean;
@@ -29,9 +31,11 @@ public class InfoPageFragment extends Fragment {
     private static final String PAGER_ID = "position";
     private View mView;
 
+    private SwipeRefreshLayout swiperefreshlayout;
     public RecyclerView newsList;
     public InfoListAdapter newsListAdapter;
     private ArrayList<NewsListBean.DataBean> newsListInfo;
+
 
     private int fragment_data_id;//viewpager的fragment数据的id
 
@@ -83,6 +87,24 @@ public class InfoPageFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        swiperefreshlayout=(SwipeRefreshLayout)mView.findViewById(R.id.swiperefreshlayout);
+        //设置刷新时动画的颜色，可以设置4个
+        swiperefreshlayout.setProgressBackgroundColorSchemeResource(android.R.color.white);
+        swiperefreshlayout.setColorSchemeResources(
+                android.R.color.holo_red_light
+        );
+        swiperefreshlayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //取出保存在Bundle中的值
+                Bundle bundle = getArguments();
+                int  pageId= bundle.getInt(PAGER_ID);
+                newsListInfo.clear();
+                getNewList(1, pageId);
+                swiperefreshlayout.setRefreshing(false);
+            }
+        });
     }
 
     public void getNewList(int page, int id) {
@@ -90,6 +112,7 @@ public class InfoPageFragment extends Fragment {
             @Override
             public void onError(Throwable e) {
                 //发生了错误的回调
+                Toast.makeText(getContext(), "网络好像有点问题", Toast.LENGTH_SHORT).show();
             }
 
             @Override
