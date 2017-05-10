@@ -7,11 +7,12 @@
     android:layout_marginRight="4dp"
     >
     <TextView
+        android:layout_marginLeft="6dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="关于对基层党支部开展“两学一做”学习教育情况进行检查的通知"
-        android:textSize="16sp"
+        android:textSize="17sp"
         android:singleLine="true"
         android:textColor="#333333"
         android:id="@+id/item_info_title" />
@@ -19,11 +20,11 @@
         android:id="@+id/item_info_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
         android:text="为严格党的组织生活，加强基层党支部建设，促进党支部工作制度化、规范化，2015年9月学校为各基层党支部印制发放了《重庆邮电大学党支部工作手册》（以下简称《工作手册》），并通知要求各基层党支部做好相应工作记录，各直属党组织应定期对所辖党支部组织生活开展情况进行指导和检查。"
         android:maxLines="2"
-
         android:layout_below="@+id/item_info_title"
-        android:textSize="11sp"
+        android:textSize="13sp"
         android:layout_marginTop="3dp"
         android:textColor="#999999"
         android:layout_toLeftOf="@+id/item_info_time"
@@ -33,7 +34,7 @@
         android:layout_width="48dp"
         android:layout_height="wrap_content"
         android:text="2016-06-07"
-        android:textSize="8sp"
+        android:textSize="9sp"
         android:maxLines="1"
         android:textColor="#999999"
         android:layout_alignBottom="@+id/divider"

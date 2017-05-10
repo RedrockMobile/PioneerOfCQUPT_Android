@@ -19,7 +19,9 @@
         android:layout_marginTop="15dp"
         android:text="重邮先锋网"
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:maxLength="40"
+        />
 
     <TextView
         android:id="@+id/tv_sub_title_toolbar"
@@ -30,4 +32,24 @@
         android:text="“两学一做”学习专题网"
         android:textColor="@color/white"
         android:textSize="11sp" />
+    <TextView
+        android:id="@+id/tv_news_detail_download"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:textColor="#ecf0f1"
+        android:textSize="14sp"
+        android:layout_alignBottom="@+id/tv_title_toolbar"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+    <Button
+        android:id="@+id/bt_toolbar_back"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="#00000000"
+        android:layout_alignTop="@+id/tv_title_toolbar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        />
 </RelativeLayout>
