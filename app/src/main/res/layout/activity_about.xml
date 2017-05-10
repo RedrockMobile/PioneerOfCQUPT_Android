@@ -1,101 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.mredrock.cypioneer.ui.activity.AboutActivity"
     >
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/play_height"
+        android:layout_height="match_parent"
         android:gravity="center"
-        android:textSize="@dimen/play_font_size"
-        android:text="????????"
+        android:text="这儿什么都没有"
         />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/play_height"
-        android:gravity="center"
-        android:textSize="@dimen/play_font_size"
-        android:text="????????"
-        />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-            <TextView
-                android:id="@+id/play_up"
-                android:layout_width="@dimen/play_height"
-                android:layout_height="@dimen/play_height"
-                android:layout_centerHorizontal="true"
-                android:gravity="center"
-                android:textSize="@dimen/play_font_size"
-                android:text="↑"
-                />
-            <TextView
-                android:id="@+id/play_down"
-                android:layout_width="@dimen/play_height"
-                android:layout_height="@dimen/play_height"
-                android:gravity="center"
-                android:layout_below="@id/play_up"
-                android:layout_centerHorizontal="true"
-                android:textSize="@dimen/play_font_size"
-                android:text="↓"
-                />
-
-            <TextView
-                android:id="@+id/play_left"
-                android:layout_width="@dimen/play_height"
-                android:layout_height="@dimen/play_height"
-                android:gravity="center"
-                android:layout_below="@id/play_up"
-                android:layout_toStartOf="@id/play_down"
-                android:textSize="@dimen/play_font_size"
-                android:text="←"
-                android:layout_toLeftOf="@id/play_down" />
-
-            <TextView
-                android:id="@+id/play_right"
-                android:layout_width="@dimen/play_height"
-                android:layout_height="@dimen/play_height"
-                android:gravity="center"
-                android:layout_below="@id/play_up"
-                android:layout_toEndOf="@id/play_down"
-                android:textSize="@dimen/play_font_size"
-                android:text="→"
-                android:layout_toRightOf="@id/play_down" />
-
-            <TextView
-                android:id="@+id/play_empty"
-                android:layout_width="@dimen/play_height"
-                android:layout_height="@dimen/play_height"
-                android:gravity="center"
-                android:layout_below="@id/play_down"
-                android:layout_centerHorizontal="true"
-                android:textSize="@dimen/play_font_size"
-                />
-
-            <TextView
-                android:id="@+id/play_a"
-                android:layout_width="@dimen/play_height"
-                android:layout_height="@dimen/play_height"
-                android:gravity="center"
-                android:layout_below="@id/play_down"
-                android:layout_toStartOf="@id/play_empty"
-                android:textSize="@dimen/play_font_size"
-                android:text="A"
-                android:layout_toLeftOf="@id/play_empty" />
-
-            <TextView
-                android:id="@+id/play_b"
-                android:layout_width="@dimen/play_height"
-                android:layout_height="@dimen/play_height"
-                android:gravity="center"
-                android:layout_below="@id/play_down"
-                android:layout_toEndOf="@id/play_empty"
-                android:textSize="@dimen/play_font_size"
-                android:text="B"
-                android:layout_toRightOf="@id/play_empty" />
-        </RelativeLayout>
-</LinearLayout>
+</merge>

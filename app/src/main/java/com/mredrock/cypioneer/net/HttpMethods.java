@@ -24,20 +24,13 @@ import rx.schedulers.Schedulers;
 public class HttpMethods {
     private static final int DEFAULT_TIMEOUT = 5;
 
-    private Retrofit mRetrofit;
     private INet mINet;
 
     private HttpMethods() {
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
         httpClientBuilder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
 
-        mRetrofit = new Retrofit.Builder()
-                .client(httpClientBuilder.build())
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .baseUrl(Api.BASE_URL)
-                .build();
-        mINet = mRetrofit.create(INet.class);
+        mINet = SingleRetrofit.getRetrofit().create(INet.class);
     }
 
     private static class SingletonHolder {

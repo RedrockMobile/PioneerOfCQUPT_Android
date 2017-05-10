@@ -18,7 +18,6 @@ import java.util.ArrayList;
 
 public class BootActivity extends Activity {
     public static final String TAG = "BootActivity123";
-    private ArrayList<PhotoBean.DataBean> carouselFigures;//
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +32,6 @@ public class BootActivity extends Activity {
             @Override
             public void run() {
                 if (SFUtil.getInstance().getToken() != null) {
-                    //TODO:觉得应该验证一下token是否过期
                     Config.user = new UserBean(SFUtil.getInstance().getUsername());
                     startActivity(new Intent(BootActivity.this, MainActivity.class));
                 } else {
