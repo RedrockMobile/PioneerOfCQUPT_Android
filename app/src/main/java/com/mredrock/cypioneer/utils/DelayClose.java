@@ -1,7 +1,6 @@
 package com.mredrock.cypioneer.utils;
 
 import android.app.Activity;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.mredrock.cypioneer.R;
@@ -19,13 +18,13 @@ public class DelayClose {
 
     public static void attachActivity(Activity activity) {
         activities.push(activity);
-        PinkUtils.LogD(TAG, activity.toString().split("@")[0] + " attached");
+        CommonUtils.LogD(TAG, activity.toString().split("@")[0] + " attached");
     }
 
     public static void detachActivity(Activity activity) {
         if (activities.contains(activity)) {
             activities.remove(activity);
-            PinkUtils.LogD(TAG, activity.toString().split("@")[0] + " detached");
+            CommonUtils.LogD(TAG, activity.toString().split("@")[0] + " detached");
         }
     }
 
@@ -47,7 +46,7 @@ public class DelayClose {
         for (Activity tmp : activities) {
             if (!activity.equals(tmp)) {
                 activities.remove(tmp);
-                PinkUtils.LogD(TAG, tmp.toString().split("@")[0] + " removed");
+                CommonUtils.LogD(TAG, tmp.toString().split("@")[0] + " removed");
                 tmp.finish();
             }
         }

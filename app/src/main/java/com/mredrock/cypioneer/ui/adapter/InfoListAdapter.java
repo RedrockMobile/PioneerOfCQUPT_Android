@@ -1,13 +1,13 @@
 package com.mredrock.cypioneer.ui.adapter;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import com.mredrock.cypioneer.R;
-import com.mredrock.cypioneer.model.bean.NewsListBean;
+import com.mredrock.cypioneer.bean.NewsListBean;
 
 import java.util.ArrayList;
 
@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class InfoListAdapter extends RecyclerView.Adapter<InfoListAdapter.MyViewHolder> implements View.OnClickListener {
     public ArrayList<NewsListBean.DataBean> newsListInfo;
     public OnRecyclerViewItemClickListener mOnItemClickListener = null;
+
     @Override
     public void onClick(View v) {
         if (mOnItemClickListener != null) {
@@ -24,26 +25,29 @@ public class InfoListAdapter extends RecyclerView.Adapter<InfoListAdapter.MyView
             mOnItemClickListener.onItemClick(v, (String) v.getTag());
         }
     }
+
     public void setOnItemClickListener(OnRecyclerViewItemClickListener listener) {
         this.mOnItemClickListener = listener;
     }
-    public  interface OnRecyclerViewItemClickListener{
-        void onItemClick(View v,String newsId);
+
+    public interface OnRecyclerViewItemClickListener {
+        void onItemClick(View v, String newsId);
     }
 
-    public InfoListAdapter(ArrayList<NewsListBean.DataBean> newsListInfo){
-        this.newsListInfo=newsListInfo;
+    public InfoListAdapter(ArrayList<NewsListBean.DataBean> newsListInfo) {
+        this.newsListInfo = newsListInfo;
     }
+
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_news_list,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_news_list, parent, false);
         MyViewHolder holder = new MyViewHolder(view);
         return holder;
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        String content=newsListInfo.get(position).getContent();
+        String content = newsListInfo.get(position).getContent();
         holder.title.setText(newsListInfo.get(position).getTitle());
         holder.content.setText(content);
         holder.time.setText(newsListInfo.get(position).getTime());
@@ -61,20 +65,23 @@ public class InfoListAdapter extends RecyclerView.Adapter<InfoListAdapter.MyView
         TextView title;
         TextView content;
         TextView time;
+
         public MyViewHolder(View itemView) {
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.item_info_title);
-            content= (TextView) itemView.findViewById(R.id.item_info_content);
+            content = (TextView) itemView.findViewById(R.id.item_info_content);
             time = (TextView) itemView.findViewById(R.id.item_info_time);
         }
     }
+
     //添加数据：在最前面添加
-    public void addItem(ArrayList<NewsListBean.DataBean> newDatas) {
-        newDatas.addAll(newsListInfo);
-        newsListInfo.removeAll(newsListInfo);
-        newsListInfo.addAll(newDatas);
+    public void addItem(ArrayList<NewsListBean.DataBean> newData) {
+        newData.addAll(newsListInfo);
+        newsListInfo.clear();
+        newsListInfo.addAll(newData);
         notifyDataSetChanged();
     }
+
     //添加数据：在最后添加
     public void addMoreItem(ArrayList<NewsListBean.DataBean> newDatas) {
         newsListInfo.addAll(newDatas);

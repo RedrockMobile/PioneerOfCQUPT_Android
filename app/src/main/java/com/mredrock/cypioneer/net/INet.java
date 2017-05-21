@@ -1,8 +1,8 @@
 package com.mredrock.cypioneer.net;
 
-import com.mredrock.cypioneer.model.bean.NewsListBean;
-import com.mredrock.cypioneer.model.bean.NewsDetailBean;
-import com.mredrock.cypioneer.model.bean.PhotoBean;
+import com.mredrock.cypioneer.bean.NewsListBean;
+import com.mredrock.cypioneer.bean.NewsDetailBean;
+import com.mredrock.cypioneer.bean.PhotoBean;
 
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;

@@ -24,7 +24,7 @@ import java.text.DecimalFormat;
  * Created by PinkD on 2016/4/1.
  * Utils
  */
-public class PinkUtils {
+public class CommonUtils {
     public static final int KB = 1024;
     public static final int MB = 1024 * 1024;
     public static final int GB = 1024 * 1024 * 1024;

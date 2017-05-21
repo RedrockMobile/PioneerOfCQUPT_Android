@@ -10,11 +10,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mredrock.cypioneer.R;
-import com.mredrock.cypioneer.model.bean.NewsListBean;
+import com.mredrock.cypioneer.bean.NewsListBean;
 import com.mredrock.cypioneer.net.HttpMethods;
 import com.mredrock.cypioneer.ui.activity.NewsDetailActivity;
 import com.mredrock.cypioneer.ui.adapter.InfoListAdapter;
@@ -75,7 +74,7 @@ public class InfoPageFragment extends Fragment {
 
     public void setRecyclerView() {
         newsList = (RecyclerView) mView.findViewById(R.id.info_recyclerview);
-        newsList.setLayoutManager(new LinearLayoutManager(getContext()));
+        newsList.setLayoutManager(new LinearLayoutManager(getActivity()));
         newsListAdapter = new InfoListAdapter(newsListInfo);
         newsList.setAdapter(newsListAdapter);
 

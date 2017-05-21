@@ -1,6 +1,6 @@
 package com.mredrock.cypioneer.net;
 
-import com.mredrock.cypioneer.model.bean.CommonWrapper;
+import com.mredrock.cypioneer.bean.CommonWrapper;
 
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;

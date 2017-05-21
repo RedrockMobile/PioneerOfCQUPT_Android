@@ -1,4 +1,4 @@
-package com.mredrock.cypioneer.model.bean;
+package com.mredrock.cypioneer.bean;
 
 /**
  * Created by PinkD on 2016/6/16.

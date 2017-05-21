@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.RadioGroup;
 
 import com.mredrock.cypioneer.BuildConfig;
@@ -16,8 +15,8 @@ import com.mredrock.cypioneer.ui.fragment.bottom.InformationFragment;
 import com.mredrock.cypioneer.ui.fragment.bottom.PersonalCenterFragment;
 import com.mredrock.cypioneer.ui.fragment.bottom.StudyDiscussionFragment;
 import com.mredrock.cypioneer.ui.fragment.pager.InfoPageFragment;
+import com.mredrock.cypioneer.utils.CommonUtils;
 import com.mredrock.cypioneer.utils.DelayClose;
-import com.mredrock.cypioneer.utils.PinkUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (BuildConfig.DEBUG) {
-            PinkUtils.LogD(TAG, "onBackPressed");
+            CommonUtils.LogD(TAG, "onBackPressed");
         }
         DelayClose.onBackPressed();
     }

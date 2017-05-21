@@ -1,15 +1,11 @@
 package com.mredrock.cypioneer.ui.activity;
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.jude.swipbackhelper.SwipeBackHelper;
 import com.mredrock.cypioneer.R;
-import com.mredrock.cypioneer.cfg.Config;
-
-import java.util.Stack;
 
 public class AboutActivity extends AppCompatActivity {
 

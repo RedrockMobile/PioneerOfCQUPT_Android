@@ -1,4 +1,4 @@
-package com.mredrock.cypioneer.cfg;
+package com.mredrock.cypioneer.config;
 
 /**
  * Created by PinkD on 2016/6/14.

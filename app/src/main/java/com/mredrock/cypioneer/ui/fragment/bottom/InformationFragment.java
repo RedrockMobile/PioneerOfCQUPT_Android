@@ -29,7 +29,7 @@ public class InformationFragment extends Fragment {
     //设置ViewPager的3个fragmrnt的PageId的数组
     int ViewPagerPosion[] = new int[]{2, 3, 4};
     //储存fragment的数组
-    private List<android.support.v4.app.Fragment> mFragments;
+    private List<Fragment> mFragments;
     //tab条目中的标题
     private String[] titles = {"通知公告", "工作动态", "基层行动"};
 
@@ -42,7 +42,7 @@ public class InformationFragment extends Fragment {
     }
 
     private void initData() {
-        infoFixedPageAdapter = new InfoFixedPageAdapter(getChildFragmentManager());
+        infoFixedPageAdapter = new InfoFixedPageAdapter(getFragmentManager());
         infoFixedPageAdapter.setTitles(titles);//标题
         mFragments = new ArrayList<>();
         for (int i = 0; i < titles.length; i++) {

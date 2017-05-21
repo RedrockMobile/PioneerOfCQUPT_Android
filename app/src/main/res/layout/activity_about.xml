@@ -9,6 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="这儿什么都没有"
+        android:text="重邮先锋网Android客户端"
         />
 </merge>

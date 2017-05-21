@@ -22,8 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mredrock.cypioneer.R;
-import com.mredrock.cypioneer.model.bean.NewsDetailBean;
-import com.mredrock.cypioneer.model.bean.NewsListBean;
+import com.mredrock.cypioneer.bean.NewsDetailBean;
 import com.mredrock.cypioneer.net.HttpMethods;
 import com.mredrock.cypioneer.utils.FileUtil;
 
@@ -137,7 +136,7 @@ public class NewsDetailActivity extends AppCompatActivity {
         DownloadManager downloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
         DownloadManager.Request request = new DownloadManager.Request(uri);
         // 设置允许使用的网络类型，这里是移动网络和wifi都可以
-        request.setAllowedNetworkTypes(request.NETWORK_MOBILE | request.NETWORK_WIFI);
+        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE | DownloadManager.Request.NETWORK_WIFI);
         //设置是否允许漫游
         request.setAllowedOverRoaming(false);
         //设置文件类型
@@ -147,7 +146,7 @@ public class NewsDetailActivity extends AppCompatActivity {
         Log.d("1234567", "downloaDattachment: " + mimeString);
         request.setMimeType(mimeString);
         //在通知栏中显示
-        request.setNotificationVisibility(request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
         request.setTitle(fileName);
         request.setVisibleInDownloadsUi(true);
         //sdcard目录下的download文件夹
@@ -168,7 +167,7 @@ public class NewsDetailActivity extends AppCompatActivity {
                     OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    /**下载完成后显示**/
+                    /*下载完成后显示*/
                     try {
                         fileUtil.openFile(new File(fileDir + fileName));
                     } catch (Exception e) {

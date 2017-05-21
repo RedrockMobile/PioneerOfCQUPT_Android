@@ -1,16 +1,12 @@
 package com.mredrock.cypioneer.net;
 
-import com.mredrock.cypioneer.cfg.Api;
-import com.mredrock.cypioneer.model.bean.NewsDetailBean;
-import com.mredrock.cypioneer.model.bean.NewsListBean;
-import com.mredrock.cypioneer.model.bean.PhotoBean;
+import com.mredrock.cypioneer.bean.NewsDetailBean;
+import com.mredrock.cypioneer.bean.NewsListBean;
+import com.mredrock.cypioneer.bean.PhotoBean;
 
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;

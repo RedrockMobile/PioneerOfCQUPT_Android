@@ -2,7 +2,6 @@ package com.mredrock.cypioneer;
 
 import android.app.Application;
 
-import com.mredrock.cypioneer.cfg.Config;
 import com.mredrock.cypioneer.utils.SFUtil;
 
 /**
@@ -14,7 +13,6 @@ public class App extends Application{
     public void onCreate() {
         super.onCreate();
         SFUtil.getInstance().init(this);
-        Config.init(this);
     }
 
 }

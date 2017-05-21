@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tabLayout"
@@ -14,14 +14,15 @@
         app:tabSelectedTextColor="#eb4f38"
         app:tabTextAppearance="@style/App_Theme"
         app:tabTextColor="#666666"/>
-    <ImageView
+
+    <View
+        android:id="@+id/divider_viewpager"
         android:layout_width="match_parent"
         android:layout_height="0.3dp"
-        android:background="#CCCCCC"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/divider_viewpager" />
+        android:background="#CCCCCC"/>
+
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"/>
 </LinearLayout>

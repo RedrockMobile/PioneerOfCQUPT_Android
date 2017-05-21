@@ -1,6 +1,6 @@
 package com.mredrock.cypioneer.net;
 
-import com.mredrock.cypioneer.cfg.Api;
+import com.mredrock.cypioneer.config.Api;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;

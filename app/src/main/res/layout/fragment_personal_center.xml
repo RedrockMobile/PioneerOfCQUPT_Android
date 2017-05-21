@@ -4,22 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/person_username"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@drawable/default_selector"
-        android:clickable="true"
-        android:gravity="center_vertical"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingStart="@dimen/activity_horizontal_margin"
-        android:text="@string/click_to_login"
-        android:textSize="20sp" />
-
-    <include
-        layout="@layout/boarder"
-        android:layout_width="match_parent"
-        android:layout_height="0.6dp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -66,30 +50,14 @@
         android:layout_height="0.6dp" />
 
     <TextView
-        android:id="@+id/person_change_password"
+        android:id="@+id/person_site"
         android:layout_width="match_parent"
         android:layout_height="@dimen/default_height"
         android:background="@drawable/default_selector"
         android:gravity="center_vertical"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingStart="@dimen/activity_horizontal_margin"
-        android:text="@string/change_password"
-        android:textSize="20sp" />
-
-    <include
-        layout="@layout/boarder"
-        android:layout_width="match_parent"
-        android:layout_height="0.6dp" />
-
-    <TextView
-        android:id="@+id/person_evaluate"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/default_height"
-        android:background="@drawable/default_selector"
-        android:gravity="center_vertical"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingStart="@dimen/activity_horizontal_margin"
-        android:text="@string/evaluate"
+        android:text="@string/site"
         android:textSize="20sp" />
 
     <include
@@ -113,14 +81,4 @@
         android:layout_width="match_parent"
         android:layout_height="0.6dp" />
 
-    <TextView
-        android:id="@+id/person_exit_login"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/default_height"
-        android:background="@drawable/default_selector"
-        android:gravity="center_vertical"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingStart="@dimen/activity_horizontal_margin"
-        android:text="@string/exit_login"
-        android:textSize="20sp" />
 </LinearLayout>

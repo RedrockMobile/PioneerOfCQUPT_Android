@@ -1,8 +1,6 @@
-package com.mredrock.cypioneer.model.bean;
+package com.mredrock.cypioneer.bean;
 
 import com.google.gson.internal.LinkedTreeMap;
-
-import org.json.JSONObject;
 
 /**
  * Created by PinkD on 2016/6/17.
