@@ -16,7 +16,6 @@
         app:tabTextColor="#666666"/>
 
     <View
-        android:id="@+id/divider_viewpager"
         android:layout_width="match_parent"
         android:layout_height="0.3dp"
         android:background="#CCCCCC"/>
