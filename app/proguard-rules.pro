@@ -76,6 +76,7 @@
 # Gayson
 -keepattributes Signature
 -keep class com.google.gson.stream.** { *; }
+-keep class com.mredrock.cypioneer.bean.** { *; }
 
 # OkHttp & Retrofit & Rx
 
@@ -159,14 +160,14 @@
 #-overloadaggressively
 
 # Remove Logs
--assumenosideeffects class android.util.Log {
-    public static *** d(...);
-    public static *** e(...);
-    public static *** i(...);
-    public static *** v(...);
-    public static *** println(...);
-    public static *** w(...);
-    public static *** wtf(...);
-}
+#-assumenosideeffects class android.util.Log {
+#    public static *** d(...);
+#    public static *** e(...);
+#    public static *** i(...);
+#    public static *** v(...);
+#    public static *** println(...);
+#    public static *** w(...);
+#    public static *** wtf(...);
+#}
 
 #---------------------------------optimize---------------------------------

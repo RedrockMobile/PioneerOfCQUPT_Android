@@ -1,5 +1,7 @@
 package com.mredrock.cypioneer.net;
 
+import android.support.annotation.Keep;
+
 import com.mredrock.cypioneer.bean.NewsListBean;
 import com.mredrock.cypioneer.bean.NewsDetailBean;
 import com.mredrock.cypioneer.bean.PhotoBean;
@@ -14,6 +16,7 @@ import rx.Observable;
  * Created by simonla on 2016/6/16.
  * Have a good day.
  */
+@Keep
 public interface INet {
 
     /**
